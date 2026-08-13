@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Multiverse Collision - Mr. Ayman Kamel</title>
+    <title>The Multiverse Collision - Boss Level</title>
 
     <meta property="og:title" content="🌌 The Multiverse Collision (Boss Level) 🌌">
-    <meta property="og:description" content="30 فخ لغوي فريد للعباقرة فقط في المتاهة المظلمة. هل يمكنك النجاة من هذه التركات؟">
+    <meta property="og:description" content="24 فخ لغوي فريد وجديد كلياً للعباقرة فقط. هل تملك الذكاء للنجاة من المتاهة المظلمة؟">
     <meta property="og:image" content="https://dummyimage.com/1200x630/ffffff/0ea5e9.png&text=Multiverse+Boss+Level">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Mr. Ayman Kamel English Educator">
@@ -24,14 +24,13 @@
         }
 
         body.theme-stage1 { --bg-color: #022c22; --stage-color: #10b981; --stage-glow: rgba(16, 185, 129, 0.4); }
-        body.theme-stage2 { --bg-color: #0f172a; --stage-color: #3b82f6; --stage-glow: rgba(59, 130, 246, 0.4); }
-        body.theme-stage3 { --bg-color: #2e1065; --stage-color: #8b5cf6; --stage-glow: rgba(139, 92, 246, 0.4); }
-        body.theme-stage4 { --bg-color: #451a03; --stage-color: #f97316; --stage-glow: rgba(249, 115, 22, 0.4); }
-        body.theme-stage5 { --bg-color: #450a0a; --stage-color: #ef4444; --stage-glow: rgba(239, 68, 68, 0.4); }
+        body.theme-stage2 { --bg-color: #083344; --stage-color: #06b6d4; --stage-glow: rgba(6, 182, 212, 0.4); }
+        body.theme-stage3 { --bg-color: #2e1065; --stage-color: #a855f7; --stage-glow: rgba(168, 85, 247, 0.4); }
+        body.theme-stage4 { --bg-color: #450a0a; --stage-color: #ef4444; --stage-glow: rgba(239, 68, 68, 0.4); }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; /* منع التظليل العشوائي */ }
+        input, .review-item * { user-select: text; } /* السماح بالتظليل في الأماكن المطلوبة فقط */
         
-        /* 🌌 فكرة 3: خلفية السفر عبر الزمن (Warp Speed Animated Background) */
         body { 
             font-family: 'Cairo', sans-serif; 
             background-color: var(--bg-color);
@@ -54,7 +53,6 @@
             100% { background-position: 0 500px; }
         }
 
-        /* 🤍 فكرة 4: واجهة الهولوجرام الطافية (Floating Holo-Card) */
         .main-container { 
             width: 95%; max-width: 850px; margin: 30px auto; 
             background: var(--panel-bg); 
@@ -68,20 +66,27 @@
 
         @keyframes floatHolo {
             0% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px var(--stage-glow); }
-            50% { transform: translateY(-12px); box-shadow: 0 35px 60px rgba(0,0,0,0.8), 0 0 50px var(--stage-glow); }
+            50% { transform: translateY(-10px); box-shadow: 0 35px 60px rgba(0,0,0,0.8), 0 0 50px var(--stage-glow); }
             100% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px var(--stage-glow); }
         }
 
-        /* 📳 فكرة 5 (الجزء البصري): اهتزاز الشاشة (Screen Shake Alert) */
-        .shake-active {
-            animation: shakeAlert 0.4s cubic-bezier(.36,.07,.19,.97) both;
-        }
+        .shake-active { animation: shakeAlert 0.4s cubic-bezier(.36,.07,.19,.97) both; }
         @keyframes shakeAlert {
             10%, 90% { transform: translate3d(-2px, 0, 0); }
             20%, 80% { transform: translate3d(4px, 0, 0); }
             30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
             40%, 60% { transform: translate3d(6px, 0, 0); }
         }
+
+        .combo-alert {
+            position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%) scale(0);
+            font-family: 'Outfit', 'Cairo', sans-serif; font-size: 55px; font-weight: 900;
+            color: #f59e0b; text-shadow: 0 0 20px #f59e0b, 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 10000; opacity: 0; pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+            text-align: center; width: 100%; direction: ltr;
+        }
+        .combo-alert.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
         header { 
             padding: 30px 20px 20px; text-align: center; color: var(--text-main); 
@@ -97,6 +102,7 @@
             cursor: pointer; transition: all 0.3s; 
             box-shadow: 0 5px 15px var(--stage-glow);
             flex-shrink: 0;
+            -webkit-user-drag: none;
         }
         header img:hover { transform: scale(1.05); box-shadow: 0 5px 25px var(--stage-glow);}
         
@@ -201,7 +207,11 @@
             transition: border-color 1.5s ease;
         }
         
-        .question-text { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-main); text-align: left; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 22px; line-height: 1.6;}
+        .question-text { font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: var(--text-main); text-align: left; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 22px; line-height: 1.6; min-height: 60px;}
+        
+        .cursor { display: inline-block; width: 8px; height: 22px; background-color: var(--stage-color); margin-left: 4px; animation: blink 0.8s infinite; vertical-align: bottom; margin-bottom: 2px;}
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
         .btn-speak { 
             background: #fff; color: var(--stage-color); border: 2px solid var(--stage-color); 
             border-radius: 10px; width: 42px; height: 42px; cursor: pointer; display: flex; 
@@ -210,7 +220,8 @@
         }
         .btn-speak:hover { background: var(--stage-color); color: #fff; transform: scale(1.1); }
 
-        .options-list { display: flex; flex-direction: column; gap: 14px; direction: ltr; }
+        .options-list { display: flex; flex-direction: column; gap: 14px; direction: ltr; opacity: 0; transition: opacity 0.5s ease; pointer-events: none;}
+        .options-list.show-options { opacity: 1; pointer-events: auto; }
         
         .option-item { 
             background: #fff; border: 2px solid #e2e8f0; 
@@ -218,14 +229,7 @@
             border-radius: 12px; padding: 16px 20px; cursor: pointer; 
             font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 700; 
             transition: all 0.3s ease; text-align: left; position: relative;
-            animation: fadeIn 0.3s ease-out forwards; opacity: 0; transform: translateY(10px);
         }
-        .option-item:nth-child(1) { animation-delay: 0.05s; }
-        .option-item:nth-child(2) { animation-delay: 0.1s; }
-        .option-item:nth-child(3) { animation-delay: 0.15s; }
-        .option-item:nth-child(4) { animation-delay: 0.2s; }
-
-        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
 
         .option-item:hover { background: #f1f5f9; transform: translateX(5px); }
         .option-item.selected { 
@@ -247,7 +251,8 @@
         }
         
         .btn-primary { background: var(--stage-color); color: #fff; box-shadow: 0 5px 15px var(--stage-glow); width: 100%; font-size: 18px; transition: background 1.5s ease; }
-        .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-primary:hover:not(:disabled) { transform: translateY(-2px); filter: brightness(1.1); }
+        .btn-primary:disabled { opacity: 0.6; cursor: wait; transform: none; box-shadow: none;}
 
         .btn-next { background: var(--stage-color); color: #fff; flex: 1; transition: background 1.5s ease; font-size: 18px; }
         .btn-next:hover { transform: translateY(-2px); filter: brightness(1.1); }
@@ -314,13 +319,13 @@
         #score-percent-text { font-family: 'Outfit', 'Cairo', sans-serif; font-size: 22px; font-weight: 900; color: var(--stage-color); margin-bottom: 12px;}
         #student-display-name { color: var(--text-main); font-size: 26px; margin-bottom: 15px; font-family: 'Cairo', sans-serif; font-weight: 900;}
 
-        .scratch-container { position: relative; display: inline-block; margin-top: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .scratch-container { position: relative; display: inline-block; margin-top: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); user-select: none; touch-action: none;}
         .badge-award { 
             display: inline-block; background: var(--stage-color); 
             color: #fff; padding: 14px 28px; font-weight: 900; font-size: 19px; min-width: 250px; min-height: 55px;
             font-family: 'Outfit', 'Cairo', sans-serif; text-transform: uppercase;
         }
-        #scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; z-index: 5; touch-action: none; }
+        #scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; z-index: 5; }
 
         .result-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px; }
         .result-actions .btn { width: 100%; font-size: 15px; padding: 18px; border-radius: 12px;}
@@ -342,11 +347,11 @@
         .review-item.is-wrong { border-left: 6px solid #ef4444; }
         
         .explanation-box { 
-            background: #f8fafc; border-radius: 12px; padding: 18px; margin-top: 18px; 
-            border: 1px dashed #cbd5e1; display: flex; flex-direction: column; gap: 10px; 
+            background: #f8fafc; border-radius: 12px; padding: 20px; margin-top: 18px; 
+            border: 1px dashed #cbd5e1; display: flex; flex-direction: column; gap: 12px; 
         }
-        .explanation-box .exp-en { direction: ltr; text-align: left; color: var(--stage-color); font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
-        .explanation-box .exp-ar { direction: rtl; text-align: right; color: var(--text-muted); border-top: 1px dashed #e2e8f0; padding-top: 10px; font-weight: 800; font-size: 15px; line-height: 1.7; }
+        .explanation-box .exp-en { direction: ltr; text-align: left; color: var(--stage-color); font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; line-height: 1.5; }
+        .explanation-box .exp-ar { direction: rtl; text-align: right; color: var(--text-muted); border-top: 1px dashed #e2e8f0; padding-top: 12px; font-weight: 800; font-size: 15px; line-height: 1.7; }
         
         @media (max-width: 768px) {
             .main-container { width: 95%; margin: 15px auto; border-radius: 16px; }
@@ -365,7 +370,7 @@
             
             .stats-bar { flex-direction: column; gap: 6px; padding: 10px; font-size: 14px; text-align: center;}
             
-            .question-text { font-size: 18px; flex-direction: row; align-items: flex-start; }
+            .question-text { font-size: 17px; flex-direction: row; align-items: flex-start; }
             .btn-speak { width: 36px; height: 36px; font-size: 16px; margin-top: 2px;}
             
             .option-item { font-size: 15px; padding: 14px 15px; }
@@ -382,15 +387,7 @@
             }
             .cheer-bubble.show { bottom: 20px; }
             
-            .result-actions { grid-template-columns: 1fr; gap: 10px;}
-            #cert-btn, .btn-facebook, .btn-reload { grid-column: span 1; }
-            .score-circle { width: 120px; height: 120px; font-size: 32px; }
-            #student-display-name { font-size: 22px; }
-            .badge-award { font-size: 16px; min-width: 200px; padding: 12px 20px;}
-            
-            .review-item { padding: 15px; }
-            .review-item > div { font-size: 14px !important; }
-            .explanation-box .exp-en, .explanation-box .exp-ar { font-size: 13px; }
+            .combo-alert { font-size: 35px; width: 90%;}
         }
     </style>
 </head>
@@ -398,12 +395,14 @@
 
 <div class="level-up-overlay" id="level-up-overlay">
     <div style="font-size: 90px; filter: drop-shadow(0 0 25px currentColor);" id="level-icon">🌌</div>
-    <div class="level-up-title-en" id="level-title-en">Stage 1: Turbulence Zone</div>
-    <div class="level-up-title-ar" id="level-title-ar">المرحلة 1: منطقة الاضطراب</div>
+    <div class="level-up-title-en" id="level-title-en">Stage 1: Sector Alpha</div>
+    <div class="level-up-title-ar" id="level-title-ar">المرحلة 1: القطاع ألفا</div>
 </div>
 
+<div class="combo-alert" id="combo-alert">🔥 3x COMBO! 🔥</div>
+
 <div class="cheer-bubble" id="cheer-bubble">
-    <img src="https://lh3.googleusercontent.com/d/1wT3vGrxgTjGJjsVZ_N9GGFmQAwYlFEF0" alt="Mr. Ayman">
+    <img src="https://lh3.googleusercontent.com/d/1wT3vGrxgTjGJjsVZ_N9GGFmQAwYlFEF0" alt="Mr. Ayman Kamel">
     <div class="cheer-text">
         <div class="cheer-en" id="cheer-en">Astounding Move!</div>
         <div class="cheer-ar" id="cheer-ar">حركة مذهلة في المتاهة!</div>
@@ -427,8 +426,8 @@
     <div class="content-body">
         <div id="start-screen">
             <div class="welcome-card">
-                <h3>👋 أهلاً بك في المتاهة المظلمة (مستوى العباقرة)!</h3>
-                <p>اصطدمت عوالم (المضارع، الماضي، والضمائر) ببعضها! أمامك <b>30 محطة فخوخ وخدع نادرة</b>. الأسئلة هنا عشوائية تماماً ومصممة لاختبار ذكائك وتركيزك لأقصى حد.. اقرأ كل حرف لتنجو!</p>
+                <h3>👋 أهلاً بك في المتاهة المظلمة (مستوى الأساطير)!</h3>
+                <p>اصطدمت العوالم اللغوية ببعضها! أمامك <b>24 محطة فخوخ فريدة من نوعها</b>. لا توجد فكرة متكررة هنا.. اقرأ كل حرف بتركيز شديد لتنجو من هذه الخدع!</p>
             </div>
             
             <button type="button" id="time-attack-btn" onclick="toggleTimeAttack()">⏳ وضع النجاة السريع (15ث): معطل</button>
@@ -448,8 +447,8 @@
 
         <div id="quiz-screen">
             <div class="stats-bar">
-                <span id="player-badge">🌀 Stage 1 (منطقة الاضطراب)</span>
-                <span id="progress-count">Node: 1 / 30</span>
+                <span id="player-badge">🌀 Stage 1 (القطاع ألفا)</span>
+                <span id="progress-count">Node: 1 / 24</span>
             </div>
 
             <div class="energy-bar-container">
@@ -459,7 +458,7 @@
 
             <div class="station-card" id="q-box">
                 <div class="question-text">
-                    <span id="question-text">--</span>
+                    <span id="question-text-content">--</span><span class="cursor" id="typing-cursor" style="display:none;"></span>
                     <button type="button" class="btn-speak" onclick="speakQuestion()">🔊</button>
                 </div>
                 <div class="options-list" id="options-list"></div>
@@ -474,7 +473,7 @@
 
         <div id="result-screen">
             <div class="score-card">
-                <div class="score-circle" id="score-percentage">0 / 30</div>
+                <div class="score-circle" id="score-percentage">0 / 24</div>
                 <div id="score-percent-text">Survival Rate: 0%</div>
                 
                 <h2 id="student-display-name"></h2>
@@ -505,7 +504,6 @@ const EMAILJS_PUBLIC_KEY = "KUgWaj4LYP2IAcRuZ";
 const EMAILJS_TEMPLATE_ID = "template_vlyjktl";
 (function(){ if (typeof emailjs !== 'undefined') emailjs.init(EMAILJS_PUBLIC_KEY); })();
 
-/* 📳 فكرة 5: الاهتزاز والتفاعل الحسي (Haptic Feedback) */
 function tryVibrate(pattern) {
     if (navigator.vibrate) {
         try { navigator.vibrate(pattern); } catch(e){}
@@ -532,6 +530,7 @@ function soundClick() { playTone(600, 'square', 0.1); tryVibrate(30); }
 function soundWrongTime() { playTone(150, 'sawtooth', 0.3); setTimeout(()=>playTone(100, 'sawtooth', 0.4), 200); tryVibrate([100, 50, 100]); }
 function soundBossWin() { [523, 659, 783, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'square',0.15), i*100)); tryVibrate([200, 100, 200, 100, 200]);}
 function soundLevelUp() { [880, 987, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'sine',0.15), i*120)); tryVibrate([100, 50, 100, 50, 200]);}
+function soundCombo() { [659, 880, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'square',0.1), i*80)); tryVibrate([50, 50, 100]);}
 
 function speakQuestion() {
     if ('speechSynthesis' in window) {
@@ -592,7 +591,7 @@ const cheers = [
     {en: "💡 Crystal Clear! 💡", ar: "القاعدة واضحة قدامك زي الشمس!"},
     {en: "☄️ Unstoppable! ☄️", ar: "لا يمكن إيقافك في هذا المستوى!"},
     {en: "🛡️ Solid Shields! 🛡️", ar: "دروعك النحوية تعمل 100%!"},
-    {en: "🏆 Stage Conquered! 🏆", ar: "لقد اكتسحت هذه المرحلة!"}
+    {en: "🏆 Node Conquered! 🏆", ar: "لقد اكتسحت هذه المحطة!"}
 ];
 
 function triggerTeacherCheer() {
@@ -622,43 +621,39 @@ function triggerEasterEgg() {
 }
 
 const rawData = [
-    { q: "1. The police ______ the suspect's house every hour.", options: ["patrols", "patrol", "is patrolling", "patrolling"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Police' is always a plural noun in English, so it takes the base verb 'patrol' in present simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ شهير! كلمة Police دايماً جمع في الإنجليزي، فتاخد الفعل سادة بدون إضافات (patrol).</div>" },
-    { q: "2. Every teacher and every student ______ requested to attend the seminar.", options: ["are", "is", "were", "have"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Two nouns joined by 'and', preceded by 'every', take a singular verb.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة ثعبانية! كلمة Every لو جت قبل الأسماء المعطوفة بـ and، الفعل يفضل مفرد (is)!</div>" },
-    { q: "3. Rarely ______ such a terrifying phenomenon in our region.", options: ["did we witness", "we witness", "do we witness", "we did witness"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences starting with negative adverbs (Rarely) use inverted word order (Aux + Subj + Verb).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة المقلوبة (Inversion). لما الجملة تبدأ بكلمة نفي زي Rarely، بنحط الفعل المساعد بتاع المضارع قبل الفاعل (do we witness).</div>" },
-    { q: "4. I completely ______ what you mean right now.", options: ["understanding", "am understanding", "understand", "understands"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Understand' is a stative verb. It cannot be used in continuous tenses even with 'right now'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> أفعال الإدراك (understand) مبتاخدش ing أبداً، بنستخدم المضارع البسيط حتى لو فيه right now.</div>" },
-    { q: "5. The international conference ______ next Monday at 9:00 AM.", options: ["begin", "is beginning", "begins", "began"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Present Simple is used for future fixed timetables and schedules.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> المؤتمرات وجداول المواعيد الثابتة في المستقبل بنعبر عنها بالمضارع البسيط (begins).</div>" },
-    { q: "6. Despite what you might think, she ______ care about your feelings.", options: ["doing", "do", "does", "is"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> We use 'do' or 'does' before the main verb in affirmative sentences for emphasis.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم does قبل الفعل في الجملة المثبتة عشان نأكد المعنى (هي بـالفعل تهتم بيك).</div>" },
-    { q: "7. Gymnastics ______ my favorite sport since I was young.", options: ["are", "is", "were", "be"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Nouns ending in 'ics' (Gymnastics, Physics) are singular and take singular verbs.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> أسماء الألعاب والعلوم المنتهية بـ s زي (الجمباز Gymnastics) بتعامل معاملة المفرد (is).</div>" },
-    { q: "8. Two-thirds of the fresh water ______ polluted in this area.", options: ["is", "are", "were", "have"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Fractions followed by an uncountable noun (water) take a singular verb.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الكسر (ثُلثي) لو جه بعده اسم لا يُعد (الماء)، الفعل بيكون مفرد (is).</div>" },
-    { q: "9. He ______ able to finish his complex tasks without assistance.", options: ["rarely is", "is rarely", "rarely be", "doesn't rarely"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Adverbs of frequency (rarely) are placed AFTER the verb 'to be'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الكلمات الدالة على التكرار زي rarely بتيجي بعد (am, is, are) مش قبلهم!</div>" },
-    { q: "10. The number of absent students ______ increasing rapidly this week.", options: ["is", "are", "have", "were"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phrase 'The number of' always takes a singular verb, unlike 'A number of'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (The number of) بييجي معاه فعل مفرد (is) لأننا بنتكلم عن (الرقم) نفسه.</div>" },
+    { q: "1. Ronaldo steals the ball, runs past the defender, and ______ a stunning goal!", options: ["is scoring", "score", "scores", "scored"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In sports commentaries describing rapid live actions, we use the Present Simple, not continuous.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في التعليق الرياضي للأحداث السريعة (Live Commentary)، بنستخدم المضارع البسيط مش المستمر.</div>" },
+    { q: "2. The strict captain insists that every single soldier ______ at exactly 5:00 AM.", options: ["wakes up", "wake up", "waking up", "is waking up"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Mandative Subjunctive: Verbs like 'insist' or 'suggest' take 'that + subject + base verb' even for singular subjects.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة للعباقرة! الأفعال زي (insist/suggest) بييجي بعدها (that + فاعل + مصدر الفعل) حتى لو الفاعل مفرد (soldier).</div>" },
+    { q: "3. According to today's newspaper headline: 'Government ______ new space program'.", options: ["announce", "is announcing", "announced", "announces"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Newspaper headlines use the present simple tense to describe recent past events for dramatic effect.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> عناوين الأخبار (Headlines) للأحداث اللي خلصت، بنكتبها دايماً في صيغة المضارع البسيط عشان تشد الانتباه.</div>" },
+    { q: "4. A number of elite scientists ______ currently analyzing the mysterious signal.", options: ["is", "are", "be", "was"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phrase 'A number of' means 'several' and always takes a plural verb (are).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> عكس (The number of).. مصطلح (A number of) بييجي دايماً معاه فعل جمع (are).</div>" },
+    { q: "5. Why are you smelling the food? — Because it ______ absolutely terrible!", options: ["smelling", "is smelling", "smells", "smell"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The second 'smell' describes a state (how it seems), so it cannot take the continuous 'ing' form.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل smell في السؤال (حركة = يشم)، لكن في الإجابة (حالة = رائحته سيئة) فمينفعش ياخد ing ويفضل مضارع بسيط.</div>" },
+    { q: "6. As the famous old proverb says: A bad workman always ______ his tools.", options: ["is blaming", "blame", "blamed", "blames"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Proverbs and universal truths are always expressed in the present simple tense.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الأمثال الشعبية والحكم (Proverbs) دايماً بتُكتب في المضارع البسيط لأنها حقيقة ثابتة.</div>" },
+    { q: "7. We will not launch the rocket unless the commander ______ the direct order.", options: ["will give", "giving", "gives", "gave"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Time/condition clauses (like 'unless') referring to the future take the present simple tense.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الروابط الشرطية والزمنية زي (unless / if / as soon as) بييجي بعدها مضارع بسيط للتعبير عن المستقبل.</div>" },
+    { q: "8. Look at the radar! Here ______ at incredible speed!", options: ["comes it", "it comes", "is it coming", "coming it"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences starting with 'Here' invert subject/verb only for nouns. If the subject is a pronoun (it), there is no inversion.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مع (Here) بنعكس الفعل والفاعل لو الفاعل اسم (Here comes Ali)، لكن لو الفاعل (ضمير زي it) مبنعكسش ونقول (Here it comes).</div>" },
 
-    { q: "11. Yesterday, the exhausted traveler ______ under the tree and slept.", options: ["lied", "lay", "laid", "lain"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the intransitive verb 'lie' (to rest horizontally) is 'lay'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ الأفعال الشاذة! الفعل (يستلقي / ينام) هو lie، والماضي بتاعه lay.</div>" },
-    { q: "12. The maid ______ the expensive portrait on the wall yesterday.", options: ["hanged", "hung", "hang", "hunged"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of 'hang' (for an object) is 'hung'. 'Hanged' is only used for executing a person.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل (يُعلق) للأشياء الماضي بتاعه hung. لكن hanged دي معناها يُعدَم شنقاً!</div>" },
-    { q: "13. When I was young, I ______ a pet dog, but I don't anymore.", options: ["would have", "used to have", "was having", "use to have"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'would' cannot be used for past states (stative verbs like 'have'). You must use 'used to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ الثانوية العامة! would بتعبر عن عادة في الماضي لأفعال الحركة بس. أفعال الحالة (يمتلك have) بتاخد used to بس!</div>" },
-    { q: "14. I ______ that novel last week; it was absolutely thrilling.", options: ["read", "reads", "readed", "red"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The irregular past form of 'read' is spelled exactly the same (read) but pronounced /red/.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل read شكله في المضارع زي الماضي بالظبط، بس النطق بيختلف.</div>" },
-    { q: "15. Who ______ the expensive glass window last night?", options: ["did break", "breaks", "broke", "was break"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When 'Who' asks about the subject, do NOT use 'did'. Use the past verb directly.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة قوية! لما نسأل عن الفاعل بـ Who مش بنحط did، بنحط الفعل في الماضي على طول (broke).</div>" },
-    { q: "16. It is high time the government ______ strict action against pollution.", options: ["take", "taking", "took", "to take"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'It is high time' followed by a subject requires the past subjunctive (past simple form).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (It is high time) لو جه بعده فاعل (the government)، لازم نستخدم الماضي البسيط (took).</div>" },
-    { q: "17. I'd rather you ______ anyone about this secret right now.", options: ["don't tell", "didn't tell", "won't tell", "not telling"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'I'd rather' + subject requires the Past Simple to express a present wish (Unreal Past).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة (I'd rather) لو جه وراها فاعل (you)، بنستخدم الماضي البسيط عشان نعبر عن أمنية/تفضيل في الحاضر.</div>" },
-    { q: "18. I wish I ______ the answer to this complex riddle today.", options: ["know", "knew", "known", "had known"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'I wish' referring to a present situation (today) requires the past simple tense.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> التمني في الحاضر (today) بـ I wish، بنستخدم معاه دايماً ماضي بسيط للتخيل (knew).</div>" },
-    { q: "19. The amateur actor performed on stage as if he ______ a superstar.", options: ["is", "was", "were", "be"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'as if' indicating an unreal situation takes the past subjunctive form 'were' for all subjects.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في حالات التخيل والاستحالة مع (as if - كما لو كان)، بنستخدم were مع كل الضمائر حتى المفرد (he).</div>" },
-    { q: "20. The thief grabbed the bag, ______ over the fence, and vanished into the night.", options: ["was jumping", "jumps", "jumped", "has jumped"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When narrating a sequence of past actions, all verbs must be in the past simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما نسرد أحداث متتالية وسريعة حصلت ورا بعض في الماضي، بنخلي كل الأفعال ماضي بسيط.</div>" },
+    { q: "9. The brilliant engineer ______ this advanced tech company back in 2005.", options: ["found", "find", "founded", "finds"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The verb 'found' (to establish) is regular. Its past form is 'founded'. It's not the past of 'find'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ خطير! الفعل (يؤسس) في المضارع هو found، والماضي بتاعه founded. ملوش علاقة بـ (يجد find).</div>" },
+    { q: "10. Building that massive space station ______ humanity billions of dollars last decade.", options: ["costed", "cost", "costs", "is costing"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the irregular verb 'cost' (for price) remains 'cost'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل (يُكلف) cost ماضيه هو cost بدون تغيير. كلمة costed بتُستخدم في حساب التكلفة المحاسبية فقط.</div>" },
+    { q: "11. During his youth, the old general ______ sit by the window and watch the stars.", options: ["would", "used", "was", "is used to"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'would' can replace 'used to' when describing repeated past actions (like sitting).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم would بدل used to للتعبير عن (عادة متكررة في الماضي) بشرط تكون فعل حركة (sit).</div>" },
+    { q: "12. Excuse me, I ______ if you had a moment to help me decode this message.", options: ["wonder", "am wondering", "wondered", "will wonder"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple ('wondered') is often used to make requests sound more polite and tentative in the present.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم الماضي البسيط (wondered/wanted) في الحاضر بهدف (الطلب بأدب شديد Polite request).</div>" },
+    { q: "13. Only later ______ the devastating truth about the alien invasion.", options: ["they realized", "did they realize", "they did realize", "realized they"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences beginning with 'Only later' require inversion (Auxiliary + Subject + Verb).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما الجملة تبدأ بـ (Only later)، بنعمل Inversion ونقدم الفعل المساعد الماضي (did) على الفاعل.</div>" },
+    { q: "14. It wasn't until the power went out that we ______ the backup generator.", options: ["need", "needs", "needed", "had needed"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'It wasn't until... that...' is followed by a past simple clause.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركيبة (It wasn't until + ماضي + that) بييجي بعدها دايماً ماضي بسيط (needed).</div>" },
+    { q: "15. The security guards ______ the intruder's hands before taking him away.", options: ["bind", "binded", "bound", "bounding"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the irregular verb 'bind' (to tie up) is 'bound'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الماضي من الفعل يقيّد أو يربط (bind) هو فعل شاذ (bound).</div>" },
+    { q: "16. If I ______ a fully functional time machine right now, I would fix everything.", options: ["have", "had", "have had", "was having"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The 2nd conditional uses the past simple tense to imagine unreal present situations.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حالة if التانية (للتخيل في الحاضر right now) بنستخدم فيها ماضي بسيط (had).</div>" },
 
-    { q: "21. This highly classified information must remain strictly between you and ______.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Prepositions like 'between' are ALWAYS followed by object pronouns.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة الامتحانات! بعد حروف الجر زي between بنستخدم دايماً مفعول به (me).</div>" },
-    { q: "22. Was it ______ who authorized this payment yesterday?", options: ["him", "his", "he", "himself"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In formal English, the pronoun following 'It is/was' and preceding 'who' is a subject pronoun.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة رسمية: الضمير اللي بييجي بعد (It was) وقبل (who)، لازم يكون فاعل (he).</div>" },
-    { q: "23. Someone knocked heavily on the door late at night. ______ was my neighbor asking for help.", options: ["He", "She", "It", "There"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> We use the dummy pronoun 'It' to identify a person before knowing who they are.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما حد يخبط على الباب ومنعرفش هويته، بنستخدم الضمير الوهمي (It) للتعريف الأول ومينفعش They.</div>" },
-    { q: "24. Whether you agree or not, my colleagues and ______ are going to file a formal complaint.", options: ["me", "I", "myself", "mine"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The compound phrase is the subject of the clause 'are going to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> زملائي وأنا (فاعل الجملة اللي هيقدموا الشكوى)، فنستخدم ضمير الفاعل (I).</div>" },
-    { q: "25. The coach gave us, specifically Ahmed and ______, a second chance to prove our skills.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Ahmed and me' is an appositive to the object 'us', so it must also be in the objective case.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> جملة توضيحية. الكوتش أعطانا إحنا (us مفعول)، فالتوضيح لازم يكون مفعول زيه (Ahmed and me).</div>" },
-    { q: "26. ______, students, must unite to voice our legitimate concerns.", options: ["Us", "Our", "We", "Ours"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phrase 'We students' functions as the subject of the sentence.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> إحنا كطلاب لازم نتحد. الطلاب هنا هما الفاعل، يبقى نختار We students.</div>" },
-    { q: "27. Despite his intensive daily training, he is still not as fast as ______ am.", options: ["me", "my", "mine", "I"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When a verb ('am') directly follows the pronoun in a comparison, we MUST use the subject pronoun 'I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في أسلوب المقارنة، طالما في فعل (am) بعد النقط، يبقى لازم نختار ضمير فاعل (I).</div>" },
-    { q: "28. Please, let ______ handle this complicated situation; we have enough experience.", options: ["my team and I", "my team and me", "I and my team", "me and my team"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The verb 'Let' is always followed by an object pronoun, even in compound phrases.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل Let دايماً بييجي بعده مفعول به (my team and me).</div>" },
-    { q: "29. Everyone in the executive board agreed to the new policy except ______.", options: ["they", "their", "him", "he"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Except' functions as a preposition here, requiring the object pronoun 'him'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة except بتُعامل كحرف جر، ولازم ييجي وراها ضمير مفعول (him).</div>" },
-    { q: "30. Suddenly, into the dark room walked the principal and ______.", options: ["he", "him", "his", "himself"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> This is an inverted sentence. 'the principal and he' is the subject of the verb 'walked'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> خدعة خطيرة! دي جملة مقلوبة. أصلها (The principal and he walked into the room)، فمحتاجين ضمير فاعل.</div>" }
+    { q: "17. Who managed to bypass the final firewall? — ______!", options: ["I", "Me", "Mine", "My"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In one-word short answers (ellipsis without a verb), object pronouns are standard.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في الإجابات المختصرة جداً (اللي من غير فعل)، بنستخدم ضمير المفعول (Me) مش الفاعل.</div>" },
+    { q: "18. If anybody discovers the secret passage, tell ______ to keep quiet.", options: ["him", "her", "them", "it"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Indefinite pronouns like 'anybody' are referred back to with the plural pronoun 'them' to remain gender-neutral.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الكلمات الغير محددة (anybody) مفرد، لكن لما نعوض عنها بضمير بنستخدم (them) عشان تشمل المذكر والمؤنث.</div>" },
+    { q: "19. The harsh instructor punishes Ahmed much more than ______.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The comparison implies 'more than he punishes me'. Since the comparison is between two objects, use 'me'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> المعنى هنا: (بيعاقب أحمد أكتر ما بيعاقبني). بما إن (أحمد) مفعول، فالمقارنة هنا بين مفعولين فنختار (me).</div>" },
+    { q: "20. You are authorized to give this access code to ______ asks for it.", options: ["whoever", "whomever", "who", "whom"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'whoever' is the subject of the verb 'asks'. Do not use 'whomever' just because of the preposition 'to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة للوحوش! بنختار whoever مش whomever، لأنها (فاعل) للفعل اللي بعدها (asks).</div>" },
+    { q: "21. I survived this deadly maze with a brilliant friend of ______.", options: ["me", "I", "mine", "my"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'a friend of' requires a possessive pronoun (mine), known as the double genitive.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (A friend of) بييجي بعده دايماً ضمير ملكية (mine) مش ضمير مفعول (me).</div>" },
+    { q: "22. The supreme commander ______ authorized this incredibly dangerous mission.", options: ["he", "him", "his", "himself"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> An intensive pronoun (himself) is used right after the subject to add strong emphasis.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما نحب نأكد إن الشخص (بنفسه) عمل الحاجة، بنحط ضمير منعكس للتوكيد (himself) بعد الفاعل.</div>" },
+    { q: "23. I have never met such a fearless warrior as ______.", options: ["he", "him", "his", "himself"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In strict formal grammar, 'as' acts as a conjunction here, followed by a subject pronoun for the omitted verb 'is' (as he is).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد (as) في اللغة الرسمية جداً، بنحط ضمير فاعل (he) لأن فيه فعل محذوف تقديره (as he is).</div>" },
+    { q: "24. Either the crew members or ______ am responsible for fixing the engine.", options: ["me", "my", "I", "mine"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In 'either... or' structures, the verb agrees with the closer subject. Since the verb is 'am', the pronoun must be 'I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في قاعدة (Either... or) الفعل بيتبع الفاعل التاني. وبما إن الفعل (am)، يبقى الفاعل لازم يكون (I).</div>" }
 ];
 
 let quizData = [];
 let currentQuestion = 0, userAnswers = {}, studentName = "", selectedAvatar = '🌀';
-let totalSeconds = 30 * 60, qTimeLeft = 15, timerInterval = null, isTimeAttack = false;
+let totalSeconds = 25 * 60, qTimeLeft = 15, timerInterval = null, isTimeAttack = false;
+let streakCount = 0; 
+let isSubmitting = false; // لمنع النقر المزدوج
 
 function shuffleOptions() {
     quizData = JSON.parse(JSON.stringify(rawData));
@@ -728,16 +723,15 @@ function startQuiz() {
 }
 
 const levelsInfo = [
-    { titleAr: "المرحلة 1: منطقة الاضطراب", titleEn: "Stage 1: Turbulence Zone", class: "theme-stage1", icon: "🟢" },
-    { titleAr: "المرحلة 2: دوامة الوهم", titleEn: "Stage 2: Illusion Vortex", class: "theme-stage2", icon: "🔵" },
-    { titleAr: "المرحلة 3: الجاذبية الصفرية", titleEn: "Stage 3: Zero Gravity", class: "theme-stage3", icon: "🟣" },
-    { titleAr: "المرحلة 4: حقل النيازك", titleEn: "Stage 4: Meteor Field", class: "theme-stage4", icon: "🟠" },
-    { titleAr: "المرحلة 5: الثقب الأسود", titleEn: "Stage 5: The Black Hole", class: "theme-stage5", icon: "🔴" }
+    { titleAr: "المرحلة 1: القطاع ألفا", titleEn: "Stage 1: Sector Alpha", class: "theme-stage1" },
+    { titleAr: "المرحلة 2: قلب السديم", titleEn: "Stage 2: Nebula Core", class: "theme-stage2" },
+    { titleAr: "المرحلة 3: أفق الحدث", titleEn: "Stage 3: Event Horizon", class: "theme-stage3" },
+    { titleAr: "المرحلة 4: التفرد الأسود", titleEn: "Stage 4: The Singularity", class: "theme-stage4" }
 ];
 
 function updateWorldTheme() {
     let levelIndex = Math.floor(currentQuestion / 6);
-    if(levelIndex > 4) levelIndex = 4;
+    if(levelIndex > 3) levelIndex = 3;
     
     document.body.className = levelsInfo[levelIndex].class;
     document.getElementById("player-badge").innerHTML = `${selectedAvatar} ${levelsInfo[levelIndex].titleEn}`;
@@ -754,6 +748,26 @@ function showLevelUp(levelIndex) {
     setTimeout(() => { overlay.classList.remove("active"); }, 2000);
 }
 
+let typeInterval;
+function typeWriter(text, elementId, callback) {
+    clearInterval(typeInterval);
+    const el = document.getElementById(elementId);
+    el.innerHTML = "";
+    document.getElementById("typing-cursor").style.display = "inline-block";
+    
+    let i = 0;
+    typeInterval = setInterval(() => {
+        if(i < text.length) {
+            el.innerHTML += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(typeInterval);
+            document.getElementById("typing-cursor").style.display = "none";
+            if(callback) callback();
+        }
+    }, 15); 
+}
+
 function loadQuestion() {
     updateWorldTheme();
 
@@ -763,9 +777,11 @@ function loadQuestion() {
     }
 
     const item = quizData[currentQuestion];
-    document.getElementById("question-text").innerText = item.q;
-
     const optionsList = document.getElementById("options-list");
+    
+    // إخفاء الخيارات بأمان قبل الكتابة
+    clearInterval(typeInterval);
+    optionsList.classList.remove("show-options");
     optionsList.innerHTML = "";
 
     item.options.forEach((opt, oIndex) => {
@@ -777,11 +793,14 @@ function loadQuestion() {
         optionsList.appendChild(div);
     });
 
+    typeWriter(item.q, "question-text-content", () => {
+        optionsList.classList.add("show-options");
+    });
+
     const total = quizData.length;
     const progressPercent = Math.round(((currentQuestion + 1) / total) * 100);
     
     document.getElementById("progress-count").innerText = `Node: ${currentQuestion + 1} / ${total}`;
-    
     document.getElementById("energy-bar").style.width = `${progressPercent}%`;
     document.getElementById("running-avatar").innerText = selectedAvatar;
     document.getElementById("running-avatar").style.left = `${progressPercent}%`;
@@ -793,16 +812,48 @@ function loadQuestion() {
     document.getElementById("submit-btn").style.display = (currentQuestion === total - 1) ? "inline-flex" : "none";
 }
 
+function showComboBadge(text) {
+    const alertBox = document.getElementById("combo-alert");
+    alertBox.innerText = text;
+    alertBox.classList.add("show");
+    soundCombo();
+    setTimeout(() => { alertBox.classList.remove("show"); }, 2500);
+}
+
 function selectOption(oIndex, e) {
     soundClick();
     spawnParticles(e);
     userAnswers[currentQuestion] = oIndex;
-    loadQuestion();
+    
+    const isCorrect = (oIndex === quizData[currentQuestion].answer);
+    if(isCorrect) {
+        streakCount++;
+        if(streakCount === 3) showComboBadge("🔥 3x COMBO! 🔥");
+        if(streakCount === 5) showComboBadge("⚡ 5x UNSTOPPABLE! ⚡");
+        if(streakCount === 7) showComboBadge("💀 7x GODLIKE! 💀");
+    } else {
+        streakCount = 0; 
+    }
+
+    const optionsList = document.getElementById("options-list");
+    optionsList.innerHTML = "";
+    quizData[currentQuestion].options.forEach((opt, i) => {
+        const div = document.createElement("div");
+        div.className = "option-item";
+        if (oIndex === i) div.classList.add("selected");
+        div.innerHTML = `<span style="direction: ltr; display: inline-block;"><b>${String.fromCharCode(65 + i)}.</b> ${opt}</span>`;
+        div.onclick = (ev) => selectOption(i, ev);
+        optionsList.appendChild(div);
+    });
 }
 
 function nextQuestion(force = false) {
     if (!force && userAnswers[currentQuestion] === undefined) { alert("يجب اختيار إجابة للنجاة في هذه المحطة!"); return; }
     soundClick();
+    
+    // حماية التخطي: إظهار الخيارات فوراً إذا تم تخطي الكتابة
+    document.getElementById("options-list").classList.add("show-options");
+
     if (currentQuestion < quizData.length - 1) { 
         currentQuestion++;
         
@@ -812,14 +863,20 @@ function nextQuestion(force = false) {
             setTimeout(() => { loadQuestion(); }, 2000); 
         } else {
             loadQuestion();
-            if ([3, 8, 14, 21, 27].includes(currentQuestion) && !isTimeAttack) triggerTeacherCheer();
+            if ([3, 8, 14, 21].includes(currentQuestion) && !isTimeAttack) triggerTeacherCheer();
         }
     }
 }
 
-function prevQuestion() { soundClick(); if (currentQuestion > 0) { currentQuestion--; loadQuestion(); } }
+function prevQuestion() { 
+    soundClick(); 
+    document.getElementById("options-list").classList.add("show-options");
+    if (currentQuestion > 0) { 
+        currentQuestion--; 
+        loadQuestion(); 
+    } 
+}
 
-/* 📳 فكرة 5: الرجة البصرية والاهتزاز عند بقاء 5 ثواني */
 function startTimer() {
     clearInterval(timerInterval);
     timerInterval = setInterval(() => {
@@ -835,6 +892,7 @@ function startTimer() {
             if (qTimeLeft <= 0) {
                 soundWrongTime();
                 userAnswers[currentQuestion] = -1; 
+                streakCount = 0;
                 if(currentQuestion < quizData.length - 1) nextQuestion(true);
                 else calculateScore();
             }
@@ -849,6 +907,7 @@ function startTimer() {
 }
 
 function confirmSubmit() {
+    if(isSubmitting) return; // منع النقر المزدوج
     if(isTimeAttack) { calculateScore(); return; } 
     let un = quizData.filter((_, i) => userAnswers[i] === undefined).length;
     if (un > 0) { 
@@ -861,6 +920,10 @@ function confirmSubmit() {
 }
 
 function calculateScore() {
+    if(isSubmitting) return;
+    isSubmitting = true;
+    document.getElementById("submit-btn").disabled = true;
+
     try {
         clearInterval(timerInterval);
         document.body.className = "theme-stage2"; 
@@ -898,7 +961,7 @@ function calculateScore() {
         let displayAv = isMaxPower ? "🌟" : selectedAvatar;
         document.getElementById("student-display-name").innerText = `${displayAv} الناجي / ${studentName}`;
         
-        document.getElementById("score-percentage").innerText = `${score} / 30`;
+        document.getElementById("score-percentage").innerText = `${score} / 24`;
         document.getElementById("score-percent-text").innerText = `Survival Rate: ${percent}%`;
         
         let modTxt = isTimeAttack ? " (النجاة السريعة 🔥)" : "";
@@ -919,9 +982,9 @@ function calculateScore() {
 
         if(typeof emailjs !== 'undefined') {
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                quiz_name: "المتاهة المظلمة (مستوى الوحش) - 30 فخ",
+                quiz_name: "المتاهة المظلمة (الأساطير) - 24 فكرة فريدة",
                 student_name: `${selectedAvatar} ${studentName}`, 
-                score: `${score}/30`, 
+                score: `${score}/24`, 
                 percentage: `${percent}%`, 
                 date_time: new Date().toLocaleString('ar-EG')
             });
@@ -935,25 +998,22 @@ function calculateScore() {
 
 function shareToWhatsApp() {
     let mode = isTimeAttack ? " (النجاة السريعة 🔥)" : "";
-    let txt = `🌌 The Multiverse Collision: Boss Level\n👤 الناجي: ${selectedAvatar} ${studentName}\n📊 النتيجة: ${finalScore}/30 (${finalPercent}%)${mode}\n✨ نجوت من متاهة التركات بنجاح يا مستر أيمن! 🚀`;
+    let txt = `🌌 The Multiverse Collision: Boss Level\n👤 الناجي: ${selectedAvatar} ${studentName}\n📊 النتيجة: ${finalScore}/24 (${finalPercent}%)${mode}\n✨ نجوت من الـ 24 فخ بنجاح يا مستر أيمن! 🚀`;
     window.open(`https://wa.me/201284749899?text=${encodeURIComponent(txt)}`, '_blank');
 }
 
-/* 📜 فكرة 6: الختم المائي والرقم التسلسلي للشهادة */
 function downloadCertificate() {
     const canvas = document.createElement('canvas');
     canvas.width = 1000;
     canvas.height = 700;
     const ctx = canvas.getContext('2d');
 
-    // رسم الخلفية
     const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     grd.addColorStop(0, "#ffffff"); 
     grd.addColorStop(1, "#f1f5f9");
     ctx.fillStyle = grd;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // إضافة الختم المائي الاحترافي (Watermark)
     ctx.save();
     ctx.translate(canvas.width / 2, canvas.height / 2);
     ctx.rotate(-Math.PI / 6);
@@ -966,7 +1026,6 @@ function downloadCertificate() {
     ctx.fillText("MULTIVERSE SURVIVOR", 0, 70);
     ctx.restore();
 
-    // رسم الإطارات
     ctx.strokeStyle = "#3b82f6";
     ctx.lineWidth = 12;
     ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
@@ -974,7 +1033,6 @@ function downloadCertificate() {
     ctx.lineWidth = 4;
     ctx.strokeRect(45, 45, canvas.width - 90, canvas.height - 90);
 
-    // كتابة محتوى الشهادة
     ctx.textAlign = "center";
     ctx.fillStyle = "#3b82f6";
     ctx.font = "bold 45px 'Outfit', sans-serif";
@@ -991,11 +1049,11 @@ function downloadCertificate() {
 
     ctx.fillStyle = "#1e293b";
     ctx.font = "25px 'Outfit', sans-serif";
-    ctx.fillText("For escaping the Boss Level Maze (30 Traps) with a score of", canvas.width / 2, 420);
+    ctx.fillText("For escaping the Boss Level Maze (24 Traps) with a score of", canvas.width / 2, 420);
 
     ctx.fillStyle = "#10b981"; 
     ctx.font = "bold 55px 'Outfit', sans-serif";
-    ctx.fillText(`${finalScore} / 30  (${finalPercent}%)`, canvas.width / 2, 500);
+    ctx.fillText(`${finalScore} / 24  (${finalPercent}%)`, canvas.width / 2, 500);
 
     ctx.fillStyle = "#64748b";
     ctx.font = "22px 'Outfit', sans-serif";
@@ -1006,14 +1064,12 @@ function downloadCertificate() {
     ctx.font = "18px 'Outfit', sans-serif";
     ctx.fillText("Date of Escape: " + dateString, canvas.width / 2, 640);
 
-    // إصدار رقم تسلسلي فريد
     ctx.fillStyle = "#94a3b8";
     ctx.font = "16px 'Outfit', sans-serif";
     ctx.textAlign = "left";
     let serialID = "ID: AK-" + dateObj.getFullYear() + "-" + Math.floor(Math.random() * 90000 + 10000);
     ctx.fillText(serialID, 55, 655);
 
-    // تحميل الشهادة
     const link = document.createElement('a');
     link.download = `Multiverse_Survival_${studentName}.png`;
     link.href = canvas.toDataURL('image/png');
