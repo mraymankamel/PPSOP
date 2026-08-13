@@ -6,7 +6,7 @@
     <title>The Multiverse Collision - Boss Level</title>
 
     <meta property="og:title" content="🌌 The Multiverse Collision (Boss Level) 🌌">
-    <meta property="og:description" content="24 فخ لغوي فريد وجديد كلياً للعباقرة فقط. هل تملك الذكاء للنجاة من المتاهة المظلمة؟">
+    <meta property="og:description" content="24 فخ لغوي فريد للعباقرة فقط. هل تملك الذكاء للنجاة من المتاهة المظلمة؟">
     <meta property="og:image" content="https://dummyimage.com/1200x630/ffffff/0ea5e9.png&text=Multiverse+Boss+Level">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Mr. Ayman Kamel English Educator">
@@ -28,8 +28,8 @@
         body.theme-stage3 { --bg-color: #2e1065; --stage-color: #a855f7; --stage-glow: rgba(168, 85, 247, 0.4); }
         body.theme-stage4 { --bg-color: #450a0a; --stage-color: #ef4444; --stage-glow: rgba(239, 68, 68, 0.4); }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; /* منع التظليل العشوائي */ }
-        input, .review-item * { user-select: text; } /* السماح بالتظليل في الأماكن المطلوبة فقط */
+        * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+        input, .review-item * { user-select: text; }
         
         body { 
             font-family: 'Cairo', sans-serif; 
@@ -61,13 +61,7 @@
             display: flex; flex-direction: column; position: relative; z-index: 1; 
             overflow: hidden;
             transition: border-color 1.5s ease, box-shadow 1.5s ease;
-            animation: floatHolo 6s ease-in-out infinite;
-        }
-
-        @keyframes floatHolo {
-            0% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px var(--stage-glow); }
-            50% { transform: translateY(-10px); box-shadow: 0 35px 60px rgba(0,0,0,0.8), 0 0 50px var(--stage-glow); }
-            100% { transform: translateY(0px); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px var(--stage-glow); }
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px var(--stage-glow);
         }
 
         .shake-active { animation: shakeAlert 0.4s cubic-bezier(.36,.07,.19,.97) both; }
@@ -77,16 +71,6 @@
             30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
             40%, 60% { transform: translate3d(6px, 0, 0); }
         }
-
-        .combo-alert {
-            position: fixed; top: 30%; left: 50%; transform: translate(-50%, -50%) scale(0);
-            font-family: 'Outfit', 'Cairo', sans-serif; font-size: 55px; font-weight: 900;
-            color: #f59e0b; text-shadow: 0 0 20px #f59e0b, 0 5px 15px rgba(0,0,0,0.5);
-            z-index: 10000; opacity: 0; pointer-events: none;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
-            text-align: center; width: 100%; direction: ltr;
-        }
-        .combo-alert.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
 
         header { 
             padding: 30px 20px 20px; text-align: center; color: var(--text-main); 
@@ -387,7 +371,15 @@
             }
             .cheer-bubble.show { bottom: 20px; }
             
-            .combo-alert { font-size: 35px; width: 90%;}
+            .result-actions { grid-template-columns: 1fr; gap: 10px;}
+            #cert-btn, .btn-facebook, .btn-reload { grid-column: span 1; }
+            .score-circle { width: 120px; height: 120px; font-size: 32px; }
+            #student-display-name { font-size: 22px; }
+            .badge-award { font-size: 16px; min-width: 200px; padding: 12px 20px;}
+            
+            .review-item { padding: 15px; }
+            .review-item > div { font-size: 14px !important; }
+            .explanation-box .exp-en, .explanation-box .exp-ar { font-size: 13px; }
         }
     </style>
 </head>
@@ -398,8 +390,6 @@
     <div class="level-up-title-en" id="level-title-en">Stage 1: Sector Alpha</div>
     <div class="level-up-title-ar" id="level-title-ar">المرحلة 1: القطاع ألفا</div>
 </div>
-
-<div class="combo-alert" id="combo-alert">🔥 3x COMBO! 🔥</div>
 
 <div class="cheer-bubble" id="cheer-bubble">
     <img src="https://lh3.googleusercontent.com/d/1wT3vGrxgTjGJjsVZ_N9GGFmQAwYlFEF0" alt="Mr. Ayman Kamel">
@@ -427,7 +417,7 @@
         <div id="start-screen">
             <div class="welcome-card">
                 <h3>👋 أهلاً بك في المتاهة المظلمة (مستوى الأساطير)!</h3>
-                <p>اصطدمت العوالم اللغوية ببعضها! أمامك <b>24 محطة فخوخ فريدة من نوعها</b>. لا توجد فكرة متكررة هنا.. اقرأ كل حرف بتركيز شديد لتنجو من هذه الخدع!</p>
+                <p>اصطدمت العوالم اللغوية ببعضها! أمامك <b>24 محطة فخوخ فريدة من نوعها</b> في (المضارع، الماضي، والضمائر). لا توجد فكرة متكررة هنا.. اقرأ كل حرف بتركيز شديد لتنجو!</p>
             </div>
             
             <button type="button" id="time-attack-btn" onclick="toggleTimeAttack()">⏳ وضع النجاة السريع (15ث): معطل</button>
@@ -530,7 +520,6 @@ function soundClick() { playTone(600, 'square', 0.1); tryVibrate(30); }
 function soundWrongTime() { playTone(150, 'sawtooth', 0.3); setTimeout(()=>playTone(100, 'sawtooth', 0.4), 200); tryVibrate([100, 50, 100]); }
 function soundBossWin() { [523, 659, 783, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'square',0.15), i*100)); tryVibrate([200, 100, 200, 100, 200]);}
 function soundLevelUp() { [880, 987, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'sine',0.15), i*120)); tryVibrate([100, 50, 100, 50, 200]);}
-function soundCombo() { [659, 880, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'square',0.1), i*80)); tryVibrate([50, 50, 100]);}
 
 function speakQuestion() {
     if ('speechSynthesis' in window) {
@@ -620,40 +609,43 @@ function triggerEasterEgg() {
     }
 }
 
+/* 🌟 24 فكرة حصرية للوحوش فقط 🌟 */
 const rawData = [
-    { q: "1. Ronaldo steals the ball, runs past the defender, and ______ a stunning goal!", options: ["is scoring", "score", "scores", "scored"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In sports commentaries describing rapid live actions, we use the Present Simple, not continuous.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في التعليق الرياضي للأحداث السريعة (Live Commentary)، بنستخدم المضارع البسيط مش المستمر.</div>" },
-    { q: "2. The strict captain insists that every single soldier ______ at exactly 5:00 AM.", options: ["wakes up", "wake up", "waking up", "is waking up"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Mandative Subjunctive: Verbs like 'insist' or 'suggest' take 'that + subject + base verb' even for singular subjects.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة للعباقرة! الأفعال زي (insist/suggest) بييجي بعدها (that + فاعل + مصدر الفعل) حتى لو الفاعل مفرد (soldier).</div>" },
-    { q: "3. According to today's newspaper headline: 'Government ______ new space program'.", options: ["announce", "is announcing", "announced", "announces"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Newspaper headlines use the present simple tense to describe recent past events for dramatic effect.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> عناوين الأخبار (Headlines) للأحداث اللي خلصت، بنكتبها دايماً في صيغة المضارع البسيط عشان تشد الانتباه.</div>" },
-    { q: "4. A number of elite scientists ______ currently analyzing the mysterious signal.", options: ["is", "are", "be", "was"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phrase 'A number of' means 'several' and always takes a plural verb (are).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> عكس (The number of).. مصطلح (A number of) بييجي دايماً معاه فعل جمع (are).</div>" },
-    { q: "5. Why are you smelling the food? — Because it ______ absolutely terrible!", options: ["smelling", "is smelling", "smells", "smell"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The second 'smell' describes a state (how it seems), so it cannot take the continuous 'ing' form.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل smell في السؤال (حركة = يشم)، لكن في الإجابة (حالة = رائحته سيئة) فمينفعش ياخد ing ويفضل مضارع بسيط.</div>" },
-    { q: "6. As the famous old proverb says: A bad workman always ______ his tools.", options: ["is blaming", "blame", "blamed", "blames"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Proverbs and universal truths are always expressed in the present simple tense.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الأمثال الشعبية والحكم (Proverbs) دايماً بتُكتب في المضارع البسيط لأنها حقيقة ثابتة.</div>" },
-    { q: "7. We will not launch the rocket unless the commander ______ the direct order.", options: ["will give", "giving", "gives", "gave"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Time/condition clauses (like 'unless') referring to the future take the present simple tense.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الروابط الشرطية والزمنية زي (unless / if / as soon as) بييجي بعدها مضارع بسيط للتعبير عن المستقبل.</div>" },
-    { q: "8. Look at the radar! Here ______ at incredible speed!", options: ["comes it", "it comes", "is it coming", "coming it"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences starting with 'Here' invert subject/verb only for nouns. If the subject is a pronoun (it), there is no inversion.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مع (Here) بنعكس الفعل والفاعل لو الفاعل اسم (Here comes Ali)، لكن لو الفاعل (ضمير زي it) مبنعكسش ونقول (Here it comes).</div>" },
+    // --- Present Simple (6 Ideas) ---
+    { q: "1. The police ______ the suspect's house every hour.", options: ["patrols", "patrol", "is patrolling", "patrolling"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Police' is always a plural noun in English, so it takes the base verb 'patrol' in present simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ شهير! كلمة Police دايماً جمع في الإنجليزي، فتاخد الفعل سادة بدون إضافات (patrol).</div>" },
+    { q: "2. Every teacher and every student ______ requested to attend the seminar.", options: ["are", "is", "were", "have"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Two nouns joined by 'and', preceded by 'every', take a singular verb.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة ثعبانية! كلمة Every لو جت قبل الأسماء المعطوفة بـ and، الفعل يفضل مفرد (is)!</div>" },
+    { q: "3. Rarely ______ such a terrifying phenomenon in our region.", options: ["did we witness", "we witness", "do we witness", "we did witness"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences starting with negative adverbs (Rarely) use inverted word order (Aux + Subj + Verb).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة المقلوبة (Inversion). لما الجملة تبدأ بكلمة نفي زي Rarely، بنحط الفعل المساعد بتاع المضارع قبل الفاعل (do we witness).</div>" },
+    { q: "4. I completely ______ what you mean right now.", options: ["understanding", "am understanding", "understand", "understands"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Understand' is a stative verb. It cannot be used in continuous tenses even with 'right now'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> أفعال الإدراك (understand) مبتاخدش ing أبداً، بنستخدم المضارع البسيط حتى لو فيه right now.</div>" },
+    { q: "5. The international conference ______ next Monday at 9:00 AM.", options: ["begin", "is beginning", "begins", "began"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Present Simple is used for future fixed timetables and schedules.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> المؤتمرات وجداول المواعيد الثابتة في المستقبل بنعبر عنها بالمضارع البسيط (begins).</div>" },
+    { q: "6. Despite what you might think, she ______ care about your feelings.", options: ["doing", "do", "does", "is"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> We use 'do' or 'does' before the main verb in affirmative sentences for emphasis.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم does قبل الفعل في الجملة المثبتة عشان نأكد المعنى (هي بـالفعل تهتم بيك).</div>" },
 
-    { q: "9. The brilliant engineer ______ this advanced tech company back in 2005.", options: ["found", "find", "founded", "finds"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The verb 'found' (to establish) is regular. Its past form is 'founded'. It's not the past of 'find'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ خطير! الفعل (يؤسس) في المضارع هو found، والماضي بتاعه founded. ملوش علاقة بـ (يجد find).</div>" },
-    { q: "10. Building that massive space station ______ humanity billions of dollars last decade.", options: ["costed", "cost", "costs", "is costing"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the irregular verb 'cost' (for price) remains 'cost'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل (يُكلف) cost ماضيه هو cost بدون تغيير. كلمة costed بتُستخدم في حساب التكلفة المحاسبية فقط.</div>" },
-    { q: "11. During his youth, the old general ______ sit by the window and watch the stars.", options: ["would", "used", "was", "is used to"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'would' can replace 'used to' when describing repeated past actions (like sitting).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم would بدل used to للتعبير عن (عادة متكررة في الماضي) بشرط تكون فعل حركة (sit).</div>" },
-    { q: "12. Excuse me, I ______ if you had a moment to help me decode this message.", options: ["wonder", "am wondering", "wondered", "will wonder"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple ('wondered') is often used to make requests sound more polite and tentative in the present.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> ممكن نستخدم الماضي البسيط (wondered/wanted) في الحاضر بهدف (الطلب بأدب شديد Polite request).</div>" },
-    { q: "13. Only later ______ the devastating truth about the alien invasion.", options: ["they realized", "did they realize", "they did realize", "realized they"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Sentences beginning with 'Only later' require inversion (Auxiliary + Subject + Verb).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما الجملة تبدأ بـ (Only later)، بنعمل Inversion ونقدم الفعل المساعد الماضي (did) على الفاعل.</div>" },
-    { q: "14. It wasn't until the power went out that we ______ the backup generator.", options: ["need", "needs", "needed", "had needed"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'It wasn't until... that...' is followed by a past simple clause.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركيبة (It wasn't until + ماضي + that) بييجي بعدها دايماً ماضي بسيط (needed).</div>" },
-    { q: "15. The security guards ______ the intruder's hands before taking him away.", options: ["bind", "binded", "bound", "bounding"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the irregular verb 'bind' (to tie up) is 'bound'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الماضي من الفعل يقيّد أو يربط (bind) هو فعل شاذ (bound).</div>" },
-    { q: "16. If I ______ a fully functional time machine right now, I would fix everything.", options: ["have", "had", "have had", "was having"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The 2nd conditional uses the past simple tense to imagine unreal present situations.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حالة if التانية (للتخيل في الحاضر right now) بنستخدم فيها ماضي بسيط (had).</div>" },
+    // --- Past Simple (6 Ideas) ---
+    { q: "7. Yesterday, the exhausted traveler ______ under the tree and slept.", options: ["lied", "lay", "laid", "lain"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of the intransitive verb 'lie' (to rest horizontally) is 'lay'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ الأفعال الشاذة! الفعل (يستلقي / ينام) هو lie، والماضي بتاعه lay.</div>" },
+    { q: "8. The maid ______ the expensive portrait on the wall yesterday.", options: ["hanged", "hung", "hang", "hunged"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The past simple of 'hang' (for an object) is 'hung'. 'Hanged' is only used for executing a person.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل (يُعلق) للأشياء الماضي بتاعه hung. لكن hanged دي معناها يُعدَم شنقاً!</div>" },
+    { q: "9. When I was young, I ______ a pet dog, but I don't anymore.", options: ["would have", "used to have", "was having", "use to have"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'would' cannot be used for past states (stative verbs like 'have'). You must use 'used to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ الثانوية العامة! would بتعبر عن عادة في الماضي لأفعال الحركة بس. أفعال الحالة (يمتلك have) بتاخد used to بس!</div>" },
+    { q: "10. Who ______ the expensive glass window last night?", options: ["did break", "breaks", "broke", "was break"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When 'Who' asks about the subject, do NOT use 'did'. Use the past verb directly.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة قوية! لما نسأل عن الفاعل بـ Who مش بنحط did، بنحط الفعل في الماضي على طول (broke).</div>" },
+    { q: "11. It is high time the government ______ strict action against pollution.", options: ["take", "taking", "took", "to take"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'It is high time' followed by a subject requires the past subjunctive (past simple form).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (It is high time) لو جه بعده فاعل (the government)، لازم نستخدم الماضي البسيط (took).</div>" },
+    { q: "12. The thief grabbed the bag, ______ over the fence, and vanished into the night.", options: ["was jumping", "jumps", "jumped", "has jumped"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When narrating a sequence of past actions, all verbs must be in the past simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما نسرد أحداث متتالية وسريعة حصلت ورا بعض في الماضي، بنخلي كل الأفعال ماضي بسيط.</div>" },
 
-    { q: "17. Who managed to bypass the final firewall? — ______!", options: ["I", "Me", "Mine", "My"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In one-word short answers (ellipsis without a verb), object pronouns are standard.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في الإجابات المختصرة جداً (اللي من غير فعل)، بنستخدم ضمير المفعول (Me) مش الفاعل.</div>" },
-    { q: "18. If anybody discovers the secret passage, tell ______ to keep quiet.", options: ["him", "her", "them", "it"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Indefinite pronouns like 'anybody' are referred back to with the plural pronoun 'them' to remain gender-neutral.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الكلمات الغير محددة (anybody) مفرد، لكن لما نعوض عنها بضمير بنستخدم (them) عشان تشمل المذكر والمؤنث.</div>" },
-    { q: "19. The harsh instructor punishes Ahmed much more than ______.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The comparison implies 'more than he punishes me'. Since the comparison is between two objects, use 'me'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> المعنى هنا: (بيعاقب أحمد أكتر ما بيعاقبني). بما إن (أحمد) مفعول، فالمقارنة هنا بين مفعولين فنختار (me).</div>" },
-    { q: "20. You are authorized to give this access code to ______ asks for it.", options: ["whoever", "whomever", "who", "whom"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'whoever' is the subject of the verb 'asks'. Do not use 'whomever' just because of the preposition 'to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة للوحوش! بنختار whoever مش whomever، لأنها (فاعل) للفعل اللي بعدها (asks).</div>" },
-    { q: "21. I survived this deadly maze with a brilliant friend of ______.", options: ["me", "I", "mine", "my"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The structure 'a friend of' requires a possessive pronoun (mine), known as the double genitive.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (A friend of) بييجي بعده دايماً ضمير ملكية (mine) مش ضمير مفعول (me).</div>" },
-    { q: "22. The supreme commander ______ authorized this incredibly dangerous mission.", options: ["he", "him", "his", "himself"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> An intensive pronoun (himself) is used right after the subject to add strong emphasis.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما نحب نأكد إن الشخص (بنفسه) عمل الحاجة، بنحط ضمير منعكس للتوكيد (himself) بعد الفاعل.</div>" },
-    { q: "23. I have never met such a fearless warrior as ______.", options: ["he", "him", "his", "himself"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In strict formal grammar, 'as' acts as a conjunction here, followed by a subject pronoun for the omitted verb 'is' (as he is).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد (as) في اللغة الرسمية جداً، بنحط ضمير فاعل (he) لأن فيه فعل محذوف تقديره (as he is).</div>" },
-    { q: "24. Either the crew members or ______ am responsible for fixing the engine.", options: ["me", "my", "I", "mine"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In 'either... or' structures, the verb agrees with the closer subject. Since the verb is 'am', the pronoun must be 'I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في قاعدة (Either... or) الفعل بيتبع الفاعل التاني. وبما إن الفعل (am)، يبقى الفاعل لازم يكون (I).</div>" }
+    // --- Subject & Object Pronouns (12 Ideas) ---
+    { q: "13. This highly classified information must remain strictly between you and ______.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Prepositions like 'between' are ALWAYS followed by object pronouns.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة الامتحانات! بعد حروف الجر زي between بنستخدم دايماً مفعول به (me).</div>" },
+    { q: "14. Was it ______ who authorized this payment yesterday?", options: ["him", "his", "he", "himself"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> In formal English, the pronoun following 'It is/was' and preceding 'who' is a subject pronoun.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة رسمية: الضمير اللي بييجي بعد (It was) وقبل (who)، لازم يكون فاعل (he).</div>" },
+    { q: "15. Someone knocked heavily on the door late at night. ______ was my neighbor asking for help.", options: ["He", "She", "It", "They"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> We use the dummy pronoun 'It' to identify a person before knowing who they are.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> لما نعوز نكتشف أو نعرّف هوية شخص مجهول بـ Verb to be بنستخدم الضمير الوهمي (It) ومينفعش They هنا.</div>" },
+    { q: "16. Whether you agree or not, my colleagues and ______ are going to file a formal complaint.", options: ["me", "I", "myself", "mine"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The compound phrase is the subject of the clause 'are going to'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> زملائي وأنا (فاعل الجملة اللي هيقدموا الشكوى)، فنستخدم ضمير الفاعل (I).</div>" },
+    { q: "17. The coach gave us, specifically Ahmed and ______, a second chance to prove our skills.", options: ["I", "my", "mine", "me"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Ahmed and me' is an appositive to the object 'us', so it must also be in the objective case.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> جملة توضيحية. الكوتش أعطانا إحنا (us مفعول)، فالتوضيح لازم يكون مفعول زيه (Ahmed and me).</div>" },
+    { q: "18. ______ students must unite to voice our legitimate concerns.", options: ["Us", "Our", "We", "Ours"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The phrase 'We students' functions as the subject of the sentence.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> إحنا كطلاب لازم نتحد. الطلاب هنا هما الفاعل، يبقى نختار We students.</div>" },
+    { q: "19. Despite his intensive daily training, he is still not as fast as ______ am.", options: ["me", "my", "mine", "I"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When a verb ('am') directly follows the pronoun in a comparison, we MUST use the subject pronoun 'I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في أسلوب المقارنة، طالما في فعل (am) بعد النقط، يبقى لازم نختار ضمير فاعل (I).</div>" },
+    { q: "20. Please, let ______ handle this complicated situation; we have enough experience.", options: ["my team and I", "my team and me", "I and my team", "me and my team"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The verb 'Let' is always followed by an object pronoun, even in compound phrases.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل Let دايماً بييجي بعده مفعول به (my team and me).</div>" },
+    { q: "21. Everyone in the executive board agreed to the new policy except ______.", options: ["they", "their", "him", "he"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Except' functions as a preposition here, requiring the object pronoun 'him'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة except بتُعامل كحرف جر، ولازم ييجي وراها ضمير مفعول (him).</div>" },
+    { q: "22. Suddenly, into the dark room walked the principal and ______.", options: ["he", "him", "his", "himself"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> This is an inverted sentence. 'the principal and he' is the subject of the verb 'walked'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> خدعة خطيرة! دي جملة مقلوبة مكانية. أصلها (The principal and he walked into the room)، فمحتاجين ضمير فاعل.</div>" },
+    { q: "23. The rare international scholarship was awarded directly to ______.", options: ["he", "his", "him", "he's"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Even in passive voice, the preposition 'to' still takes an object pronoun.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حتى في المبني للمجهول، حرف الجر (to) بيفضل ياخد مفعول به (him).</div>" },
+    { q: "24. It makes absolutely no difference to ______ or ______ what you decide.", options: ["he / I", "him / me", "his / mine", "him / I"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The preposition 'to' requires both pronouns to be in the object case.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد حرف الجر (to) بنحط مفعول به. وبما إنهم معطوفين على بعض، يبقى الاتنين مفعول (him / me).</div>" }
 ];
 
 let quizData = [];
 let currentQuestion = 0, userAnswers = {}, studentName = "", selectedAvatar = '🌀';
 let totalSeconds = 25 * 60, qTimeLeft = 15, timerInterval = null, isTimeAttack = false;
-let streakCount = 0; 
-let isSubmitting = false; // لمنع النقر المزدوج
+let isSubmitting = false; 
 
 function shuffleOptions() {
     quizData = JSON.parse(JSON.stringify(rawData));
@@ -779,7 +771,6 @@ function loadQuestion() {
     const item = quizData[currentQuestion];
     const optionsList = document.getElementById("options-list");
     
-    // إخفاء الخيارات بأمان قبل الكتابة
     clearInterval(typeInterval);
     optionsList.classList.remove("show-options");
     optionsList.innerHTML = "";
@@ -812,28 +803,10 @@ function loadQuestion() {
     document.getElementById("submit-btn").style.display = (currentQuestion === total - 1) ? "inline-flex" : "none";
 }
 
-function showComboBadge(text) {
-    const alertBox = document.getElementById("combo-alert");
-    alertBox.innerText = text;
-    alertBox.classList.add("show");
-    soundCombo();
-    setTimeout(() => { alertBox.classList.remove("show"); }, 2500);
-}
-
 function selectOption(oIndex, e) {
     soundClick();
     spawnParticles(e);
     userAnswers[currentQuestion] = oIndex;
-    
-    const isCorrect = (oIndex === quizData[currentQuestion].answer);
-    if(isCorrect) {
-        streakCount++;
-        if(streakCount === 3) showComboBadge("🔥 3x COMBO! 🔥");
-        if(streakCount === 5) showComboBadge("⚡ 5x UNSTOPPABLE! ⚡");
-        if(streakCount === 7) showComboBadge("💀 7x GODLIKE! 💀");
-    } else {
-        streakCount = 0; 
-    }
 
     const optionsList = document.getElementById("options-list");
     optionsList.innerHTML = "";
@@ -851,7 +824,6 @@ function nextQuestion(force = false) {
     if (!force && userAnswers[currentQuestion] === undefined) { alert("يجب اختيار إجابة للنجاة في هذه المحطة!"); return; }
     soundClick();
     
-    // حماية التخطي: إظهار الخيارات فوراً إذا تم تخطي الكتابة
     document.getElementById("options-list").classList.add("show-options");
 
     if (currentQuestion < quizData.length - 1) { 
@@ -892,7 +864,6 @@ function startTimer() {
             if (qTimeLeft <= 0) {
                 soundWrongTime();
                 userAnswers[currentQuestion] = -1; 
-                streakCount = 0;
                 if(currentQuestion < quizData.length - 1) nextQuestion(true);
                 else calculateScore();
             }
@@ -907,7 +878,7 @@ function startTimer() {
 }
 
 function confirmSubmit() {
-    if(isSubmitting) return; // منع النقر المزدوج
+    if(isSubmitting) return; 
     if(isTimeAttack) { calculateScore(); return; } 
     let un = quizData.filter((_, i) => userAnswers[i] === undefined).length;
     if (un > 0) { 
@@ -982,7 +953,7 @@ function calculateScore() {
 
         if(typeof emailjs !== 'undefined') {
             emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-                quiz_name: "المتاهة المظلمة (الأساطير) - 24 فكرة فريدة",
+                quiz_name: "المتاهة المظلمة (النسخة النهائية) - 24 فكرة",
                 student_name: `${selectedAvatar} ${studentName}`, 
                 score: `${score}/24`, 
                 percentage: `${percent}%`, 
