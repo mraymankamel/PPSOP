@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Multiverse Collision - Mr. Ayman Kamel</title>
+
+    <meta property="og:title" content="🌌 The Multiverse Collision (Mega Quiz) 🌌">
+    <meta property="og:description" content="تصادم الأزمنة والضمائر! 30 محطة للنجاة في المتاهة.. هل تقبل التحدي؟">
+    <meta property="og:image" content="https://dummyimage.com/1200x630/ffffff/0ea5e9.png&text=Multiverse+Collision">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mr. Ayman Kamel English Educator">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        /* 🌌 الهوية البصرية: تصادم العوالم والمتاهة 🌌 */
+        :root {
+            --panel-bg: #ffffff; /* تم تطبيق الخلفية البيضاء النقية للاختبار */
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --error-color: #ef4444;
+            --success-color: #10b981;
+        }
+
+        /* 🟢 المرحلة 1: منطقة الاضطراب */
+        body.theme-stage1 { --bg-color: #022c22; --stage-color: #10b981; --stage-glow: rgba(16, 185, 129, 0.4); }
+        /* 🔵 المرحلة 2: دوامة الوهم */
+        body.theme-stage2 { --bg-color: #0f172a; --stage-color: #3b82f6; --stage-glow: rgba(59, 130, 246, 0.4); }
+        /* 🟣 المرحلة 3: الجاذبية الصفرية */
+        body.theme-stage3 { --bg-color: #2e1065; --stage-color: #8b5cf6; --stage-glow: rgba(139, 92, 246, 0.4); }
+        /* 🟠 المرحلة 4: حقل النيازك */
+        body.theme-stage4 { --bg-color: #451a03; --stage-color: #f97316; --stage-glow: rgba(249, 115, 22, 0.4); }
+        /* 🔴 المرحلة 5: الثقب الأسود */
+        body.theme-stage5 { --bg-color: #450a0a; --stage-color: #ef4444; --stage-glow: rgba(239, 68, 68, 0.4); }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: var(--bg-color);
+            background-image: radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px);
+            background-size: 30px 30px;
+            color: var(--text-main); 
+            direction: rtl; 
+            overflow-x: hidden; 
+            min-height: 100vh;
+            transition: background-color 1.5s ease;
+        }
+
+        .main-container { 
+            width: 100%; max-width: 850px; margin: 35px auto; 
+            background: var(--panel-bg); 
+            border: 3px solid var(--stage-color);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), 0 0 40px var(--stage-glow); 
+            display: flex; flex-direction: column; position: relative; z-index: 1; 
+            overflow: hidden;
+            transition: border-color 1.5s ease, box-shadow 1.5s ease;
+        }
+
+        header { 
+            padding: 30px 20px 20px; text-align: center; color: var(--text-main); 
+            border-bottom: 2px solid var(--stage-color); position: relative; 
+            background: none; /* إزالة خلفية الهيدر */
+            transition: border-color 1.5s ease;
+        }
+        
+        header img { 
+            width: 105px; height: 105px; object-fit: contain; background: #ffffff; 
+            padding: 5px; border-radius: 12px; border: 3px solid var(--stage-color); 
+            margin-bottom: 15px; cursor: pointer; transition: all 0.3s; 
+            box-shadow: 0 5px 15px var(--stage-glow);
+        }
+        header img:hover { transform: scale(1.05); box-shadow: 0 5px 25px var(--stage-glow);}
+        
+        header h1 { font-family: 'Outfit', sans-serif; font-size: 26px; margin: 0; color: var(--stage-color); font-weight: 900; transition: color 1.5s ease; direction: ltr;}
+        header p { margin: 6px 0 10px 0; font-size: 15px; font-weight: 800; color: var(--text-main); }
+        .badge-info { 
+            font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 900; color: #fff; 
+            background: var(--stage-color); 
+            padding: 6px 18px; border-radius: 8px; display: inline-block; 
+            box-shadow: 0 0 10px var(--stage-glow); 
+            transition: background 1.5s ease; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        .timer-container { position: absolute; top: 15px; left: 15px; display: flex; align-items: center; gap: 6px; z-index: 10; direction: ltr; }
+        .timer-box { 
+            background: #f8fafc; border: 2px solid var(--stage-color); color: var(--stage-color); 
+            padding: 0 12px; height: 38px; display: flex; align-items: center; justify-content: center; 
+            border-radius: 10px; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 16px; 
+            transition: all 1.5s ease;
+        }
+        .timer-box.danger { border-color: var(--error-color); color: var(--error-color); animation: pulseRed 0.5s infinite alternate; }
+        .hidden-timer { color: transparent !important; text-shadow: 0 0 8px rgba(0,0,0,0.2) !important; }
+
+        .timer-toggle-btn { 
+            background: #f8fafc; border: 2px solid var(--stage-color); color: var(--stage-color); 
+            width: 32px; height: 32px; border-radius: 8px; font-weight: 800; cursor: pointer; font-size: 14px; 
+            display: flex; align-items: center; justify-content: center; padding: 0; transition: all 0.3s;
+        }
+
+        @keyframes pulseRed { 0% { transform: scale(1); } 100% { transform: scale(1.05); } }
+        
+        .content-body { padding: 35px 30px; flex: 1; position: relative;}
+
+        #start-screen { text-align: center; }
+        .welcome-card { 
+            background: #f8fafc; border-radius: 16px; padding: 30px; 
+            border: 2px solid var(--stage-color); margin-bottom: 30px; 
+            transition: border-color 1.5s ease;
+        }
+        .welcome-card h3 { font-size: 24px; margin-bottom: 12px; color: var(--stage-color); font-weight: 900; transition: color 1.5s ease;}
+        .welcome-card p { font-size: 16px; line-height: 1.8; color: var(--text-muted); font-weight: 700;}
+        
+        #time-attack-btn { 
+            background: #fff; color: var(--error-color); 
+            border: 2px dashed var(--error-color); padding: 15px; border-radius: 12px; 
+            cursor: pointer; margin-bottom: 25px; font-weight: 800; font-size: 15px; width: 100%; transition: all 0.3s; 
+            font-family: 'Outfit', 'Cairo', sans-serif;
+        }
+        #time-attack-btn.active { background: var(--error-color); color: #fff; border-style: solid; box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3); }
+
+        .avatar-grid { display: flex; justify-content: center; gap: 18px; margin-bottom: 25px; flex-wrap: wrap;}
+        .avatar-option { 
+            font-size: 38px; padding: 12px 18px; background: #f8fafc; 
+            border: 2px solid #e2e8f0; border-radius: 16px; cursor: pointer; 
+            transition: all 0.3s; 
+        }
+        .avatar-option.selected { 
+            background: #fff; border-color: var(--stage-color); 
+            box-shadow: 0 5px 15px var(--stage-glow); transform: translateY(-5px);
+        }
+        
+        .input-group input { 
+            width: 100%; padding: 18px 20px; border-radius: 12px; 
+            border: 2px solid #e2e8f0; background: #f8fafc; 
+            color: var(--text-main); font-size: 18px; outline: none; margin-bottom: 30px; 
+            font-weight: 800; text-align: center; transition: all 0.3s;
+        }
+        .input-group input:focus { border-color: var(--stage-color); box-shadow: 0 0 15px var(--stage-glow); background: #fff;}
+
+        #quiz-screen { display: none; }
+        
+        .stats-bar { 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: #f8fafc; padding: 12px 22px; border-radius: 12px; 
+            border: 2px solid var(--stage-color); margin-bottom: 25px; 
+            direction: ltr; font-weight: 900; font-size: 15px; font-family: 'Outfit', 'Cairo', sans-serif;
+            transition: border-color 1.5s ease;
+        }
+        #player-badge { color: var(--stage-color); transition: color 1.5s ease;}
+        
+        .energy-bar-container { 
+            height: 12px; background: #f1f5f9; border-radius: 10px; 
+            border: 1px solid #e2e8f0; margin-bottom: 45px; position: relative; direction: ltr;
+        }
+        .energy-bar-fill { 
+            height: 100%; background: var(--stage-color); 
+            width: 0%; border-radius: 8px; transition: width 0.5s ease-in-out, background 1.5s ease; 
+        }
+        
+        .running-avatar { 
+            position: absolute; top: -35px; left: 0%; transform: translateX(-50%);
+            font-size: 30px; transition: left 0.5s ease-in-out; z-index: 10; 
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+        }
+
+        .station-card { 
+            background: #f8fafc; border-radius: 18px; padding: 30px 25px; 
+            border: 2px solid var(--stage-color); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 25px; 
+            display: flex; flex-direction: column; direction: ltr; position: relative;
+            transition: border-color 1.5s ease;
+        }
+        
+        .question-text { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; color: var(--text-main); text-align: left; display: flex; justify-content: space-between; align-items: flex-start; gap: 15px; margin-bottom: 22px; line-height: 1.5;}
+        .btn-speak { 
+            background: #fff; color: var(--stage-color); border: 2px solid var(--stage-color); 
+            border-radius: 10px; width: 42px; height: 42px; cursor: pointer; display: flex; 
+            align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .btn-speak:hover { background: var(--stage-color); color: #fff; transform: scale(1.1); }
+
+        .options-list { display: flex; flex-direction: column; gap: 14px; direction: ltr; }
+        
+        .option-item { 
+            background: #fff; border: 2px solid #e2e8f0; 
+            border-left: 5px solid var(--stage-color); color: var(--text-main); 
+            border-radius: 12px; padding: 16px 20px; cursor: pointer; 
+            font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; 
+            transition: all 0.3s ease; text-align: left; position: relative;
+            animation: fadeIn 0.3s ease-out forwards; opacity: 0; transform: translateY(10px);
+        }
+        .option-item:nth-child(1) { animation-delay: 0.05s; }
+        .option-item:nth-child(2) { animation-delay: 0.1s; }
+        .option-item:nth-child(3) { animation-delay: 0.15s; }
+        .option-item:nth-child(4) { animation-delay: 0.2s; }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        .option-item:hover { background: #f1f5f9; transform: translateX(5px); }
+        .option-item.selected { 
+            background: var(--stage-color); border-color: var(--stage-color); 
+            color: #fff; box-shadow: 0 5px 15px var(--stage-glow); 
+            transform: translateX(10px); font-weight: 800;
+        }
+
+        .click-particle { position: fixed; pointer-events: none; font-size: 22px; z-index: 9999; animation: flyOut 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;}
+        @keyframes flyOut { 0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; } 100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.8); opacity: 0; } }
+
+        .action-btns { display: flex; justify-content: space-between; gap: 15px; direction: ltr; margin-top: 30px; }
+        
+        .btn { 
+            padding: 16px 24px; border-radius: 12px; font-weight: 900; font-size: 16px; 
+            cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; 
+            font-family: 'Outfit', 'Cairo', sans-serif; transition: all 0.3s; 
+            text-transform: uppercase; letter-spacing: 1px; outline: none; border: none;
+        }
+        
+        .btn-primary { background: var(--stage-color); color: #fff; box-shadow: 0 5px 15px var(--stage-glow); width: 100%; font-size: 18px; transition: background 1.5s ease; }
+        .btn-primary:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        .btn-next { background: var(--stage-color); color: #fff; flex: 1; transition: background 1.5s ease; font-size: 18px; }
+        .btn-next:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        .btn-prev { background: #f1f5f9; color: var(--text-main); border: 2px solid #e2e8f0; min-width: 140px; }
+        .btn-prev:hover:not(:disabled) { background: #e2e8f0; transform: translateY(-2px);}
+        .btn-prev:disabled { opacity: 0.4; cursor: not-allowed; transform: none;}
+
+        /* 🌟 الانتقال بين المراحل 🌟 */
+        .level-up-overlay { 
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+            background: rgba(15, 23, 42, 0.95); z-index: 9999; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; opacity: 0; pointer-events: none; 
+            transition: opacity 0.4s; backdrop-filter: blur(10px);
+        }
+        .level-up-overlay.active { opacity: 1; pointer-events: auto; }
+        .level-up-title-en {
+            font-family: 'Outfit', sans-serif; font-size: 45px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 30px var(--stage-color); margin-top: 15px; letter-spacing: 2px;
+            transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-transform: uppercase;
+        }
+        .level-up-title-ar {
+            font-family: 'Cairo', sans-serif; font-size: 24px; font-weight: 800; color: var(--stage-color);
+            margin-top: 10px; letter-spacing: 1px;
+        }
+        .level-up-overlay.active .level-up-title-en { transform: scale(1); }
+
+        .cheer-bubble { 
+            position: fixed; bottom: -120px; right: 20px; 
+            background: #fff; border: 2px solid #e2e8f0; border-right: 6px solid var(--stage-color);
+            border-radius: 14px; padding: 15px 22px; display: flex; align-items: center; gap: 15px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 999; 
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 1.5s ease; direction: ltr; 
+        }
+        .cheer-bubble.show { bottom: 30px; }
+        .cheer-bubble img { width: 50px; height: 50px; object-fit: contain; border-radius: 10px; border: 2px solid var(--stage-color); padding: 3px; background: #ffffff;}
+        .cheer-text { display: flex; flex-direction: column; gap: 4px; flex: 1;}
+        .cheer-en { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 900; color: var(--text-main); text-align: left;}
+        .cheer-ar { font-family: 'Cairo', sans-serif; font-size: 13px; font-weight: 700; color: var(--stage-color); text-align: right; direction: rtl; border-top: 1px dashed #e2e8f0; padding-top: 5px;}
+
+        .golden-avatar { filter: drop-shadow(0 0 15px var(--stage-color)) contrast(1.3); }
+        .badge-golden { background: var(--stage-color) !important; color: #fff !important; box-shadow: 0 0 20px var(--stage-glow) !important;}
+
+        @media print {
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            header img, .result-actions, .energy-bar-container, .timer-container, .btn-speak, .cheer-bubble { display: none !important; }
+            body { background: #fff; color: #000;}
+            .main-container { box-shadow: none; border: 1px solid #ccc; background: #fff; }
+            .review-item, .explanation-box { border: 1px solid #ccc; background: #f8fafc; box-shadow: none;}
+        }
+
+        #result-screen { display: none; direction: rtl; }
+        .score-card { 
+            background: #f8fafc; border-radius: 20px; padding: 40px 30px; 
+            text-align: center; margin-bottom: 25px; border: 2px solid var(--stage-color); 
+        }
+        
+        .score-circle { 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 4px solid var(--stage-color); display: flex; align-items: center; justify-content: center; 
+            margin: 0 auto 20px; font-family: 'Outfit', sans-serif; font-size: 42px; font-weight: 900; 
+            color: #fff; background: var(--stage-color); direction: ltr; box-shadow: 0 5px 15px var(--stage-glow);
+        }
+        #score-percent-text { font-family: 'Outfit', 'Cairo', sans-serif; font-size: 22px; font-weight: 900; color: var(--stage-color); margin-bottom: 12px;}
+        #student-display-name { color: var(--text-main); font-size: 26px; margin-bottom: 15px; font-family: 'Cairo', sans-serif; font-weight: 900;}
+
+        .scratch-container { position: relative; display: inline-block; margin-top: 15px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);}
+        .badge-award { 
+            display: inline-block; background: var(--stage-color); 
+            color: #fff; padding: 14px 28px; font-weight: 900; font-size: 19px; min-width: 250px; min-height: 55px;
+            font-family: 'Outfit', 'Cairo', sans-serif; text-transform: uppercase;
+        }
+        #scratch-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: crosshair; z-index: 5; touch-action: none; }
+
+        .result-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 35px; }
+        .result-actions .btn { width: 100%; font-size: 15px; padding: 18px; border-radius: 12px;}
+        
+        #cert-btn { grid-column: span 2; background: var(--stage-color); color: #fff; }
+        .btn-facebook { grid-column: span 2; background: #1877F2 !important; color: #fff !important; border: none !important; box-shadow: 0 4px 10px rgba(24, 119, 242, 0.2) !important;}
+        .btn-facebook:hover { background: #166fe5 !important; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(24, 119, 242, 0.3) !important;}
+
+        .btn-whatsapp { background: #dcfce7 !important; color: #16a34a !important; border: 1px solid #16a34a !important;}
+        .btn-whatsapp:hover { background: #16a34a !important; color: #fff !important; }
+        .btn-print { background: #f8fafc !important; color: var(--text-main) !important; border: 2px solid #e2e8f0 !important;}
+        .btn-reload { grid-column: span 2; background: #f1f5f9; color: var(--text-main); border: 2px solid #e2e8f0;}
+
+        .review-item { 
+            background: #fff; border-radius: 16px; padding: 25px; margin-bottom: 20px; 
+            border: 2px solid #e2e8f0; text-align: left; direction: ltr; position: relative;
+        }
+        .review-item.is-correct { border-left: 6px solid #10b981; }
+        .review-item.is-wrong { border-left: 6px solid #ef4444; }
+        
+        .explanation-box { 
+            background: #f8fafc; border-radius: 12px; padding: 18px; margin-top: 18px; 
+            border: 1px dashed #cbd5e1; display: flex; flex-direction: column; gap: 10px; 
+        }
+        .explanation-box .exp-en { direction: ltr; text-align: left; color: var(--stage-color); font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; }
+        .explanation-box .exp-ar { direction: rtl; text-align: right; color: var(--text-muted); border-top: 1px dashed #e2e8f0; padding-top: 10px; font-weight: 800; font-size: 15px; line-height: 1.7; }
+        
+        @media (max-width: 600px) {
+            .result-actions { grid-template-columns: 1fr; }
+            #cert-btn, .btn-facebook, .btn-reload { grid-column: span 1; }
+            .action-btns { flex-direction: column-reverse; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body id="main-body" class="theme-stage1">
+
+<div class="level-up-overlay" id="level-up-overlay">
+    <div style="font-size: 90px; filter: drop-shadow(0 0 25px currentColor);" id="level-icon">🌌</div>
+    <div class="level-up-title-en" id="level-title-en">Stage 1: Turbulence Zone</div>
+    <div class="level-up-title-ar" id="level-title-ar">المرحلة 1: منطقة الاضطراب</div>
+</div>
+
+<div class="cheer-bubble" id="cheer-bubble">
+    <img src="https://lh3.googleusercontent.com/d/1wT3vGrxgTjGJjsVZ_N9GGFmQAwYlFEF0" alt="Mr. Ayman">
+    <div class="cheer-text">
+        <div class="cheer-en" id="cheer-en">Astounding Move!</div>
+        <div class="cheer-ar" id="cheer-ar">حركة مذهلة في المتاهة!</div>
+    </div>
+</div>
+
+<div class="main-container" id="app-container">
+    <header>
+        <div class="timer-container" id="timer-container" style="display: none;">
+            <button type="button" class="timer-toggle-btn" id="btn-timer-view" onclick="toggleTimerView()" title="إخفاء / إظهار الوقت">👁️</button>
+            <div class="timer-box" id="timer-box">⏱️ <span id="timer-text">30:00</span></div>
+        </div>
+
+        <img src="https://lh3.googleusercontent.com/d/1wT3vGrxgTjGJjsVZ_N9GGFmQAwYlFEF0" alt="Mr. Ayman Kamel Logo" onclick="triggerEasterEgg()">
+        
+        <h1>Mr. Ayman Kamel</h1>
+        <p>1st Secondary English G10 B</p>
+        <div class="badge-info" id="top-badge">🌌 The Multiverse Collision 🌌</div>
+    </header>
+
+    <div class="content-body">
+        <div id="start-screen">
+            <div class="welcome-card">
+                <h3>👋 أهلاً بك في المتاهة المظلمة!</h3>
+                <p>اصطدمت عوالم (المضارع، الماضي، والضمائر) ببعضها! أمامك <b>30 محطة نجاة</b> متدرجة الصعوبة وعشوائية تماماً. لا توجد تلميحات.. اقرأ الجملة بتركيز لتنجو!</p>
+            </div>
+            
+            <button type="button" id="time-attack-btn" onclick="toggleTimeAttack()">⏳ وضع النجاة السريع (15ث): معطل</button>
+
+            <h4 style="color: var(--text-main); font-weight: 800; margin-bottom: 15px;">اختر صورتك الرمزية للنجاة:</h4>
+            <div class="avatar-grid">
+                <div class="avatar-option selected" onclick="selectAvatar(this, '🌀')">🌀</div>
+                <div class="avatar-option" onclick="selectAvatar(this, '🛡️')">🛡️</div>
+                <div class="avatar-option" onclick="selectAvatar(this, '⚡')">⚡</div>
+                <div class="avatar-option" onclick="selectAvatar(this, '🦸‍♂️')">🦸‍♂️</div>
+            </div>
+            <div class="input-group">
+                <input type="text" id="studentName" placeholder="أدخل اسمك للدخول إلى المتاهة..." autocomplete="off">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="startQuiz()">Enter The Multiverse 🚀</button>
+        </div>
+
+        <div id="quiz-screen">
+            <div class="stats-bar">
+                <span id="player-badge">🌀 Stage 1 (منطقة الاضطراب)</span>
+                <span id="progress-count">Node: 1 / 30</span>
+            </div>
+
+            <div class="energy-bar-container">
+                <div class="energy-bar-fill" id="energy-bar"></div>
+                <div class="running-avatar" id="running-avatar">🌀</div>
+            </div>
+
+            <div class="station-card" id="q-box">
+                <div class="question-text">
+                    <span id="question-text">--</span>
+                    <button type="button" class="btn-speak" onclick="speakQuestion()">🔊</button>
+                </div>
+                <div class="options-list" id="options-list"></div>
+            </div>
+
+            <div class="action-btns">
+                <button type="button" class="btn btn-prev" id="prev-btn" onclick="prevQuestion()" disabled>⬅ Previous</button>
+                <button type="button" class="btn btn-next" id="next-btn" onclick="nextQuestion()">Next ➔</button>
+                <button type="button" class="btn btn-primary" id="submit-btn" onclick="confirmSubmit()" style="display: none; width: auto;">Escape Maze 🏁</button>
+            </div>
+        </div>
+
+        <div id="result-screen">
+            <div class="score-card">
+                <div class="score-circle" id="score-percentage">0 / 30</div>
+                <div id="score-percent-text">Survival Rate: 0%</div>
+                
+                <h2 id="student-display-name"></h2>
+                
+                <div class="scratch-container">
+                    <div id="badge-award-box" class="badge-award">رتبة النجاة</div>
+                    <canvas id="scratch-canvas"></canvas>
+                </div>
+
+                <p id="score-details" style="font-size: 16px; font-weight: 800; margin-top: 20px; color: var(--text-muted);"></p>
+            </div>
+            <div class="result-actions">
+                <button type="button" class="btn btn-facebook" onclick="window.open('https://www.facebook.com/AymanKamelOfficial', '_blank')">👍 تابع صفحتنا على فيسبوك</button>
+                <button type="button" class="btn" id="cert-btn" onclick="downloadCertificate()" style="display: none;">📜 استخراج وسام النجاة الأسطوري</button>
+                <button type="button" class="btn btn-whatsapp" onclick="shareToWhatsApp()">💬 أرسل إشارة النجاة (واتساب)</button>
+                <button type="button" class="btn btn-print" onclick="window.print()">🖨️ طباعة تقرير المتاهة PDF</button>
+                <button type="button" class="btn btn-reload" onclick="location.reload()">🔄 دخول المتاهة من جديد</button>
+            </div>
+            <h3 style="text-align: right; color: var(--stage-color); margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px;">📂 مراجعة أخطاء وفخاخ المتاهة:</h3>
+            <div id="review-list" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const EMAILJS_SERVICE_ID = "service_uu1lnnq";
+const EMAILJS_PUBLIC_KEY = "KUgWaj4LYP2IAcRuZ";
+const EMAILJS_TEMPLATE_ID = "template_vlyjktl";
+(function(){ if (typeof emailjs !== 'undefined') emailjs.init(EMAILJS_PUBLIC_KEY); })();
+
+let audioCtx = null;
+function initAudio() {
+    if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+function playTone(freq, type, duration) {
+    try {
+        initAudio();
+        let osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+        osc.type = type; osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(); osc.stop(audioCtx.currentTime + duration);
+    } catch(e){}
+}
+function soundClick() { playTone(600, 'square', 0.1); }
+function soundWrongTime() { playTone(150, 'sawtooth', 0.3); setTimeout(()=>playTone(100, 'sawtooth', 0.4), 200); }
+function soundBossWin() { [523, 659, 783, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'square',0.15), i*100)); }
+function soundLevelUp() { [880, 987, 1046, 1318].forEach((f,i)=> setTimeout(()=>playTone(f,'sine',0.15), i*120)); }
+
+function speakQuestion() {
+    if ('speechSynthesis' in window) {
+        let text = quizData[currentQuestion].q.replace(/_+/g, "blank");
+        let msg = new SpeechSynthesisUtterance(text);
+        msg.lang = 'en-US';
+        msg.rate = 0.85;
+        window.speechSynthesis.speak(msg);
+    }
+}
+
+function initScratchCard() {
+    const container = document.getElementById("badge-award-box");
+    const canvas = document.getElementById("scratch-canvas");
+    const ctx = canvas.getContext("2d");
+    
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+    
+    ctx.fillStyle = "#cbd5e1"; 
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.font = "bold 16px 'Cairo', sans-serif";
+    ctx.fillStyle = "#1e293b";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText("🪄 اخدش هنا لكشف رتبتك!", canvas.width/2, canvas.height/2);
+    
+    let isDrawing = false;
+    function scratch(e) {
+        if(!isDrawing) return;
+        e.preventDefault();
+        let rect = canvas.getBoundingClientRect();
+        let x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+        let y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+        
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 25, 0, Math.PI*2);
+        ctx.fill();
+    }
+    
+    canvas.onmousedown = () => isDrawing = true;
+    canvas.ontouchstart = () => isDrawing = true;
+    canvas.onmouseup = () => isDrawing = false;
+    canvas.ontouchend = () => isDrawing = false;
+    canvas.onmousemove = scratch;
+    canvas.ontouchmove = scratch;
+}
+
+const cheers = [
+    {en: "🌌 Stellar Performance! 🤩", ar: "أداء مبهر في المتاهة!"},
+    {en: "🧠 Logic Master! 😎", ar: "اكتشفت الفخ بنجاح!"},
+    {en: "⚡ Rapid Response! 🥳", ar: "سرعة بديهة خيالية!"},
+    {en: "🎯 Perfect Aim! ⚡", ar: "إجابة في منتصف الهدف!"},
+    {en: "🛡️ Illusion Broken! 🔥", ar: "كسرت دوامة الوهم بجدارة!"},
+    {en: "🌪️ Survived the Trap! 🌪️", ar: "نجوت من الفخ اللغوي!"},
+    {en: "💡 Crystal Clear! 💡", ar: "القاعدة واضحة قدامك زي الشمس!"},
+    {en: "☄️ Unstoppable! ☄️", ar: "لا يمكن إيقافك في هذا المستوى!"},
+    {en: "🛡️ Solid Shields! 🛡️", ar: "دروعك النحوية تعمل 100%!"},
+    {en: "🏆 Stage Conquered! 🏆", ar: "لقد اكتسحت هذه المرحلة!"}
+];
+
+function triggerTeacherCheer() {
+    const bubble = document.getElementById("cheer-bubble");
+    const cheer = cheers[Math.floor(Math.random() * cheers.length)];
+    document.getElementById("cheer-en").innerText = cheer.en;
+    document.getElementById("cheer-ar").innerText = cheer.ar;
+    bubble.classList.add("show");
+    setTimeout(() => { bubble.classList.remove("show"); }, 3500);
+}
+
+let logoClicks = 0, logoClickTimer, isMaxPower = false;
+function triggerEasterEgg() {
+    logoClicks++;
+    clearTimeout(logoClickTimer);
+    logoClickTimer = setTimeout(() => { logoClicks = 0; }, 1500);
+    
+    if(logoClicks >= 5 && !isMaxPower) {
+        isMaxPower = true;
+        soundLevelUp();
+        alert("⚡ تم تفعيل درع النجاة المطلق للأستاذ أيمن! ⚡");
+        document.getElementById("running-avatar").classList.add("golden-avatar");
+        document.getElementById("top-badge").classList.add("badge-golden");
+        document.getElementById("top-badge").innerText = "👑 Master of the Multiverse 👑";
+        logoClicks = 0;
+    }
+}
+
+/* 🌟 30 سؤالاً ممزوجة العوالم (مضارع / ماضي / ضمائر) 🌟 */
+const rawData = [
+    // 🟢 Stage 1: Turbulence Zone (Q1-Q6)
+    { q: "1. The earth ______ around the sun.", options: ["revolve", "revolves", "is revolving", "revolved"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Scientific facts are Present Simple. 'Earth' is singular, so add 's'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حقيقة علمية، الأرض مفرد، نحط للفعل s.</div>" },
+    { q: "2. I ______ my grandparents in the village yesterday.", options: ["visit", "visits", "visiting", "visited"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'yesterday' indicates past simple. Add '-ed'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة yesterday بتدل على الماضي، بنضيف ed للفعل.</div>" },
+    { q: "3. Fatima is very smart. ______ always gets the highest marks.", options: ["She", "Her", "He", "Hers"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Fatima' is a female subject. Replace it with 'She'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فاطمة فاعل مفرد مؤنث، نختار ضمير الفاعل She.</div>" },
+    { q: "4. They ______ to school by bus every day.", options: ["goes", "going", "go", "went"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Plural subjects take the base form in present simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفاعل جمع (They) في المضارع، الفعل ينزل بدون إضافات (go).</div>" },
+    { q: "5. The car ______ suddenly in the middle of the road.", options: ["stop", "stoped", "stopped", "stopping"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Past simple. Double the final consonant before adding '-ed' (stop -> stopped).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الفعل بينتهي بساكن قبله متحرك، بنضاعف الحرف الأخير ونحط ed.</div>" },
+    { q: "6. Can ______ open the window, please? I feel hot.", options: ["me", "your", "you", "him"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> We use 'you' as a subject pronoun to address someone directly.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بتطلب طلب من حد، يبقى هو الفاعل (المخاطب you).</div>" },
+
+    // 🔵 Stage 2: The Illusion Vortex (Q7-Q12)
+    { q: "7. He always ______ early on weekdays.", options: ["wake up", "wakes up", "waking up", "woke up"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Habit in present. Adverb comes before the verb, which takes 's'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> دي عادة في المضارع. always بتيجي قبل الفعل اللي بياخد s مع المفرد.</div>" },
+    { q: "8. We ______ to the beach and swam in the sea last summer.", options: ["go", "goed", "went", "gone"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Irregular past verb. The past of 'go' is 'went'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حدث في الماضي. ماضي go هو went (فعل شاذ).</div>" },
+    { q: "9. I can't find my glasses. Have you seen ______ anywhere?", options: ["it", "them", "they", "their"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'glasses' is plural and receives the action -> object pronoun 'them'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> النضارة في الإنجليزي جمع (مفعول به)، نختار them.</div>" },
+    { q: "10. Where ______ your parents work?", options: ["does", "do", "are", "is"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Your parents' is plural, so we use 'do' in the present question.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> فخ! parents (والداك) جمع، فياخدوا الفعل المساعد (do).</div>" },
+    { q: "11. My father ______ a new car a month ago.", options: ["buy", "buyed", "bought", "bring"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'ago' indicates past. Irregular past of 'buy' is 'bought'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> كلمة ago ماضي. الفعل buy شاذ، والماضي بتاعه هو bought.</div>" },
+    { q: "12. Where is Ali? I need to ask ______ a question.", options: ["he", "his", "him", "himself"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Ali' receives the action (ask) -> object pronoun 'him'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> علي هيتلقى السؤال (مفعول)، ضمير المفعول هو him.</div>" },
+
+    // 🟣 Stage 3: Zero Gravity (Q13-Q18)
+    { q: "13. Ahmed is never late; he ______ punctual.", options: ["is always", "always is", "was always", "always was"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Adverbs of frequency come AFTER verb 'to be' (is always).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة دهب: ظروف التكرار بتيجي بـعـد Verb to be (is always) مش قبله!</div>" },
+    { q: "14. ______ you finish your homework early yesterday?", options: ["Do", "Did", "Are", "Were"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Yes/No questions in the past simple start with 'Did'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> السؤال بـ 'هل' في الماضي بيبدأ بـ Did وبعدها مصدر الفعل.</div>" },
+    { q: "15. The company sent an email to Sara and ______ yesterday.", options: ["I", "me", "my", "we"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The preposition 'to' is followed by object pronouns.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> حرف الجر to بيجي بعده مفعول، حتى لو معطوف على اسم (Sara and me).</div>" },
+    { q: "16. This soup ______ delicious!", options: ["is tasting", "tastes", "taste", "tasted"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Stative verbs (taste) are used in simple tenses, not continuous.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> أفعال الحواس والحالة (taste) بتيجي مضارع بسيط مش مستمر!</div>" },
+    { q: "17. They ______ very happy at the surprise party last night.", options: ["was", "are", "were", "did"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'were' is the past form of 'to be' for plural subjects.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الجملة مفيهاش فعل حركة، فبنستخدم were مع الفاعل الجمع (They).</div>" },
+    { q: "18. This big secret is just between you and ______.", options: ["I", "my", "me", "mine"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> After prepositions like 'between', always use object pronouns.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة قوية! بعد حروف الجر زي between بنستخدم دايماً مفعول (me).</div>" },
+
+    // 🟠 Stage 4: Meteor Field (Q19-Q24)
+    { q: "19. Everyone in the class ______ the answer to this question.", options: ["know", "knows", "is knowing", "are knowing"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'Everyone' takes a singular verb and 'know' is a stative verb.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة مهمة: Everyone بتتعامل معاملة المفرد وفعل know مبياخدش ing.</div>" },
+    { q: "20. Who ______ the window while we were out?", options: ["did break", "breaks", "broke", "was break"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> When 'Who' asks about the subject, do NOT use 'did'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> تركة قوية! لما نسأل عن الفاعل بـ Who مش بنحط did، بنحط الفعل في الماضي على طول.</div>" },
+    { q: "21. Let ______ tell you the truth about what happened.", options: ["I", "my", "me", "mine"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The verb 'Let' is always followed by an object pronoun.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> كود مهم: الفعل Let دايماً بييجي بعده ضمير مفعول (me).</div>" },
+    { q: "22. Heat ______ ice into water.", options: ["melt", "melts", "is melting", "melted"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Scientific facts use Present Simple. Uncountable 'Heat' is singular.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> الحقائق العلمية مضارع بسيط والحرارة اسم لا يعاد فياخد s.</div>" },
+    { q: "23. He didn't ______ to like vegetables, but now he loves them.", options: ["used", "use", "using", "uses"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> After 'didn't', the verb 'use' must return to its base form.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد didn't بنرجع الفعل لمصدره، فتبقى didn't use to.</div>" },
+    { q: "24. Omar and ______ are joining the school trip.", options: ["I", "me", "my", "mine"], answer: 0, exp: "<div class='exp-en'>💡 <b>Explanation:</b> The subject of the sentence is a compound 'Omar and I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> عمر وأنا (في أول الجملة قبل الفعل)، يبقى إحنا الفاعل ونختار I.</div>" },
+
+    // 🔴 Stage 5: The Black Hole (Q25-Q30)
+    { q: "25. The train to Aswan ______ at exactly 8:15 AM tomorrow.", options: ["leave", "is leaving", "leaves", "left"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Present Simple is used for future official fixed timetables.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> جداول المواعيد الثابتة في المستقبل بتستخدم مضارع بسيط (leaves)!</div>" },
+    { q: "26. I'd rather you ______ anyone about this secret.", options: ["don't tell", "didn't tell", "won't tell", "not telling"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'I'd rather' + subject takes the past simple for present unreal situations.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> قاعدة (I'd rather) لو جه وراها فاعل، بييجي وراهم ماضي بسيط (ماضي وهمي).</div>" },
+    { q: "27. She is much taller than ______ am.", options: ["me", "my", "mine", "I"], answer: 3, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Because the verb 'am' follows the blank, we need the subject pronoun 'I'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> في المقارنة، طالما حطلك فعل (am) بعد النقط، يبقى لازم فاعل (I).</div>" },
+    { q: "28. As soon as she ______ her exam results, she will call us.", options: ["get", "gets", "will get", "is getting"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> Time clause: As soon as + Present Simple -> Future (will).</div><div class='exp-ar'>✨ <b>الخلاصة:</b> بعد الروابط الزمنية (As soon as) ييجي مضارع بسيط (gets) والطرف الآخر مستقبل.</div>" },
+    { q: "29. It's time we ______ home. It's getting dark.", options: ["go", "went", "going", "gone"], answer: 1, exp: "<div class='exp-en'>💡 <b>Explanation:</b> 'It's time' + subject requires the Past Simple.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> مصطلح (It's time) لو جه وراه فاعل، بنستخدم دايماً الماضي البسيط.</div>" },
+    { q: "30. Why are ______ looking at ______?", options: ["you / I", "your / me", "you / me", "your / my"], answer: 2, exp: "<div class='exp-en'>💡 <b>Explanation:</b> First blank is subject (you), second blank is object (me) after 'at'.</div><div class='exp-ar'>✨ <b>الخلاصة:</b> محتاجين فاعل في الأول (you)، ومفعول بعد حرف الجر at وهو (me).</div>" }
+];
+
+let quizData = [];
+let currentQuestion = 0, userAnswers = {}, studentName = "", selectedAvatar = '🌀';
+let totalSeconds = 30 * 60, qTimeLeft = 15, timerInterval = null, isTimeAttack = false;
+
+function shuffleOptions() {
+    quizData = JSON.parse(JSON.stringify(rawData));
+    quizData.forEach(item => {
+        let correctText = item.options[item.answer];
+        item.options.sort(() => Math.random() - 0.5); 
+        item.answer = item.options.indexOf(correctText);
+    });
+}
+
+function toggleTimeAttack() {
+    isTimeAttack = !isTimeAttack;
+    const btn = document.getElementById("time-attack-btn");
+    if(isTimeAttack) {
+        btn.classList.add("active");
+        btn.innerText = "🔥 وضع النجاة السريع: مُفعّل (15ث للسؤال)";
+        soundClick();
+    } else {
+        btn.classList.remove("active");
+        btn.innerText = "⏳ وضع النجاة السريع: معطل";
+        soundClick();
+    }
+}
+
+function spawnParticles(e) {
+    const x = e.clientX, y = e.clientY;
+    for(let i=0; i<6; i++) {
+        let p = document.createElement('div');
+        p.className = 'click-particle';
+        p.innerText = ['✨', '🌀', '☄️', '🌌'][Math.floor(Math.random()*4)];
+        p.style.left = x + 'px'; p.style.top = y + 'px';
+        p.style.setProperty('--dx', (Math.random() * 100 - 50) + 'px');
+        p.style.setProperty('--dy', (Math.random() * 100 - 50) + 'px');
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 600);
+    }
+}
+
+function selectAvatar(el, avatar) {
+    document.querySelectorAll('.avatar-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedAvatar = avatar;
+    soundClick();
+}
+
+function toggleTimerView() { 
+    document.getElementById("timer-text").classList.toggle("hidden-timer"); 
+    soundClick(); 
+}
+
+function startQuiz() {
+    const input = document.getElementById("studentName").value.trim();
+    if (!input) { alert("أدخل اسمك للدخول إلى المتاهة المظلمة!"); return; }
+    studentName = input;
+    
+    shuffleOptions(); 
+    soundClick();
+    
+    document.getElementById("start-screen").style.display = "none";
+    document.getElementById("quiz-screen").style.display = "block";
+    document.getElementById("timer-container").style.display = "flex";
+    
+    startTimer();
+    loadQuestion();
+}
+
+const levelsInfo = [
+    { titleAr: "المرحلة 1: منطقة الاضطراب", titleEn: "Stage 1: Turbulence Zone", class: "theme-stage1", icon: "🟢" },
+    { titleAr: "المرحلة 2: دوامة الوهم", titleEn: "Stage 2: Illusion Vortex", class: "theme-stage2", icon: "🔵" },
+    { titleAr: "المرحلة 3: الجاذبية الصفرية", titleEn: "Stage 3: Zero Gravity", class: "theme-stage3", icon: "🟣" },
+    { titleAr: "المرحلة 4: حقل النيازك", titleEn: "Stage 4: Meteor Field", class: "theme-stage4", icon: "🟠" },
+    { titleAr: "المرحلة 5: الثقب الأسود", titleEn: "Stage 5: The Black Hole", class: "theme-stage5", icon: "🔴" }
+];
+
+function updateWorldTheme() {
+    let levelIndex = Math.floor(currentQuestion / 6);
+    if(levelIndex > 4) levelIndex = 4;
+    
+    document.body.className = levelsInfo[levelIndex].class;
+    document.getElementById("player-badge").innerHTML = `${selectedAvatar} ${levelsInfo[levelIndex].titleEn}`;
+}
+
+function showLevelUp(levelIndex) {
+    soundLevelUp();
+    const overlay = document.getElementById("level-up-overlay");
+    document.getElementById("level-icon").innerText = "🌌";
+    document.getElementById("level-title-en").innerText = `${levelsInfo[levelIndex].titleEn}`;
+    document.getElementById("level-title-ar").innerText = `${levelsInfo[levelIndex].titleAr}`;
+    
+    overlay.classList.add("active");
+    setTimeout(() => { overlay.classList.remove("active"); }, 2000);
+}
+
+function loadQuestion() {
+    updateWorldTheme();
+
+    if(isTimeAttack) {
+        qTimeLeft = 15; 
+        document.getElementById("timer-box").classList.remove("danger");
+    }
+
+    const item = quizData[currentQuestion];
+    document.getElementById("question-text").innerText = item.q;
+
+    const optionsList = document.getElementById("options-list");
+    optionsList.innerHTML = "";
+
+    item.options.forEach((opt, oIndex) => {
+        const div = document.createElement("div");
+        div.className = "option-item";
+        if (userAnswers[currentQuestion] === oIndex) div.classList.add("selected");
+        div.innerHTML = `<span style="direction: ltr; display: inline-block;"><b>${String.fromCharCode(65 + oIndex)}.</b> ${opt}</span>`;
+        div.onclick = (e) => selectOption(oIndex, e);
+        optionsList.appendChild(div);
+    });
+
+    const total = quizData.length;
+    const progressPercent = Math.round(((currentQuestion + 1) / total) * 100);
+    
+    document.getElementById("progress-count").innerText = `Node: ${currentQuestion + 1} / ${total}`;
+    
+    document.getElementById("energy-bar").style.width = `${progressPercent}%`;
+    document.getElementById("running-avatar").innerText = selectedAvatar;
+    document.getElementById("running-avatar").style.left = `${progressPercent}%`;
+
+    document.getElementById("prev-btn").disabled = currentQuestion === 0;
+    if(isTimeAttack) document.getElementById("prev-btn").style.display = "none";
+
+    document.getElementById("next-btn").style.display = (currentQuestion === total - 1) ? "none" : "inline-flex";
+    document.getElementById("submit-btn").style.display = (currentQuestion === total - 1) ? "inline-flex" : "none";
+}
+
+function selectOption(oIndex, e) {
+    soundClick();
+    spawnParticles(e);
+    userAnswers[currentQuestion] = oIndex;
+    loadQuestion();
+}
+
+function nextQuestion(force = false) {
+    if (!force && userAnswers[currentQuestion] === undefined) { alert("يجب اختيار إجابة للنجاة في هذه المحطة!"); return; }
+    soundClick();
+    if (currentQuestion < quizData.length - 1) { 
+        currentQuestion++;
+        
+        if (currentQuestion % 6 === 0) {
+            let nextLevelIndex = currentQuestion / 6;
+            showLevelUp(nextLevelIndex);
+            setTimeout(() => { loadQuestion(); }, 2000); 
+        } else {
+            loadQuestion();
+            if ([3, 8, 14, 21, 27].includes(currentQuestion) && !isTimeAttack) triggerTeacherCheer();
+        }
+    }
+}
+
+function prevQuestion() { soundClick(); if (currentQuestion > 0) { currentQuestion--; loadQuestion(); } }
+
+function startTimer() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        if(isTimeAttack) {
+            qTimeLeft--;
+            document.getElementById("timer-text").innerText = `00:${qTimeLeft<10?'0'+qTimeLeft:qTimeLeft}`;
+            if (qTimeLeft <= 5) document.getElementById("timer-box").classList.add("danger");
+            if (qTimeLeft <= 0) {
+                soundWrongTime();
+                userAnswers[currentQuestion] = -1; 
+                if(currentQuestion < quizData.length - 1) nextQuestion(true);
+                else calculateScore();
+            }
+        } else {
+            totalSeconds--;
+            let m = Math.floor(totalSeconds / 60), s = totalSeconds % 60;
+            document.getElementById("timer-text").innerText = `${m<10?'0'+m:m}:${s<10?'0'+s:s}`;
+            if (totalSeconds <= 120) document.getElementById("timer-box").classList.add("danger");
+            if (totalSeconds <= 0) { clearInterval(timerInterval); calculateScore(); }
+        }
+    }, 1000);
+}
+
+function confirmSubmit() {
+    if(isTimeAttack) { calculateScore(); return; } 
+    let un = quizData.filter((_, i) => userAnswers[i] === undefined).length;
+    if (un > 0) { 
+        if(confirm(`⚠️ تحذير: توجد ${un} محطات مجهولة! هل تريد إنهاء الرحلة الآن؟`)) {
+            calculateScore(); 
+        }
+    } else {
+        calculateScore();
+    }
+}
+
+function calculateScore() {
+    try {
+        clearInterval(timerInterval);
+        document.body.className = "theme-stage2"; 
+
+        let score = 0;
+        const reviewList = document.getElementById("review-list");
+        reviewList.innerHTML = "";
+
+        quizData.forEach((item, index) => {
+            const isCorrect = userAnswers[index] === item.answer;
+            if (isCorrect) score++;
+            
+            let userOptText = "لم يتم الحل ❌";
+            if (userAnswers[index] !== undefined && userAnswers[index] !== -1) {
+                userOptText = item.options[userAnswers[index]];
+            }
+            const correctOpt = item.options[item.answer];
+
+            const div = document.createElement("div");
+            div.className = `review-item ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+            div.innerHTML = `<div style="font-weight:800;font-size:16px;margin-bottom:8px; direction: ltr; color: var(--text-main);">${item.q}</div>
+                <div style="direction: rtl; color: var(--text-muted);">إجابتك: <b style="color:${isCorrect?'var(--success-color)':'var(--error-color)'}; direction: ltr; display: inline-block;">${userOptText}</b></div>
+                ${!isCorrect ? `<div style="color:var(--success-color);font-weight:800;margin-top:4px; direction: rtl;">الإجابة الصحيحة: <span style="direction: ltr; display: inline-block;">${correctOpt}</span></div>` : ''}
+                <div class="explanation-box">${item.exp}</div>`;
+            reviewList.appendChild(div);
+        });
+
+        const percent = Math.round((score / quizData.length) * 100);
+        window.finalScore = score; window.finalPercent = percent;
+
+        document.getElementById("quiz-screen").style.display = "none";
+        document.getElementById("timer-container").style.display = "none";
+        
+        let displayAv = isMaxPower ? "🌟" : selectedAvatar;
+        document.getElementById("student-display-name").innerText = `${displayAv} الناجي / ${studentName}`;
+        
+        document.getElementById("score-percentage").innerText = `${score} / 30`;
+        document.getElementById("score-percent-text").innerText = `Survival Rate: ${percent}%`;
+        
+        let modTxt = isTimeAttack ? " (النجاة السريعة 🔥)" : "";
+        document.getElementById("score-details").innerText = `تم الخروج من المتاهة بنجاح! ${modTxt}`;
+
+        let badge = percent >= 90 ? "👑 سيد العوالم (Multiverse Lord)" : percent >= 75 ? "🔥 ناجٍ خبير (Expert Survivor)" : "🌱 مستكشف مبتدئ (Novice)";
+        if(isMaxPower) badge = "👑 Master of the Multiverse 👑";
+        document.getElementById("badge-award-box").innerText = badge;
+        
+        if (percent >= 80) {
+            document.getElementById("cert-btn").style.display = "inline-flex";
+        }
+        
+        document.getElementById("result-screen").style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setTimeout(() => initScratchCard(), 100);
+
+        if(typeof emailjs !== 'undefined') {
+            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                quiz_name: "المتاهة المظلمة - 30 سؤال (Multiverse Collision)",
+                student_name: `${selectedAvatar} ${studentName}`, 
+                score: `${score}/30`, 
+                percentage: `${percent}%`, 
+                date_time: new Date().toLocaleString('ar-EG')
+            });
+        }
+        if (percent >= 80 && typeof confetti === 'function') confetti({ particleCount: 300, spread: 150, origin: { y: 0.6 }, colors: ['#06b6d4', '#10b981', '#a855f7'] });
+        
+    } catch(e) {
+        console.error("حدث خطأ في حساب النتيجة:", e);
+    }
+}
+
+function shareToWhatsApp() {
+    let mode = isTimeAttack ? " (النجاة السريعة 🔥)" : "";
+    let txt = `🌌 The Multiverse Collision: Mega Survival\n👤 الناجي: ${selectedAvatar} ${studentName}\n📊 النتيجة: ${finalScore}/30 (${finalPercent}%)${mode}\n✨ نجوت من متاهة الأزمنة والضمائر يا مستر أيمن! 🚀`;
+    window.open(`https://wa.me/201284749899?text=${encodeURIComponent(txt)}`, '_blank');
+}
+
+function downloadCertificate() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1000;
+    canvas.height = 700;
+    const ctx = canvas.getContext('2d');
+
+    const grd = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    grd.addColorStop(0, "#ffffff"); 
+    grd.addColorStop(1, "#f1f5f9");
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.strokeStyle = "#3b82f6";
+    ctx.lineWidth = 12;
+    ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+    ctx.strokeStyle = "#8b5cf6";
+    ctx.lineWidth = 4;
+    ctx.strokeRect(45, 45, canvas.width - 90, canvas.height - 90);
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#3b82f6";
+    ctx.font = "bold 45px Arial, sans-serif";
+    ctx.fillText("🌌 Certificate of Ultimate Survival 🌌", canvas.width / 2, 120);
+
+    ctx.fillStyle = "#1e293b";
+    ctx.font = "30px Arial, sans-serif";
+    ctx.fillText("This legendary document is awarded to the elite survivor:", canvas.width / 2, 220);
+
+    ctx.fillStyle = "#8b5cf6";
+    ctx.font = "bold 60px Arial, sans-serif";
+    let displayAv = isMaxPower ? "🌟" : selectedAvatar;
+    ctx.fillText(displayAv + " " + studentName, canvas.width / 2, 320);
+
+    ctx.fillStyle = "#1e293b";
+    ctx.font = "25px Arial, sans-serif";
+    ctx.fillText("For escaping the Multiverse Maze (30 Nodes) with a score of", canvas.width / 2, 420);
+
+    ctx.fillStyle = "#10b981"; 
+    ctx.font = "bold 55px Arial, sans-serif";
+    ctx.fillText(`${finalScore} / 30  (${finalPercent}%)`, canvas.width / 2, 500);
+
+    ctx.fillStyle = "#64748b";
+    ctx.font = "22px Arial, sans-serif";
+    ctx.fillText("Maze Master: Mr. Ayman Kamel", canvas.width / 2, 600);
+    
+    let dateObj = new Date();
+    let dateString = dateObj.toLocaleDateString('en-GB');
+    ctx.font = "18px Arial, sans-serif";
+    ctx.fillText("Date of Escape: " + dateString, canvas.width / 2, 640);
+
+    const link = document.createElement('a');
+    link.download = `Multiverse_Survival_${studentName}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+}
+</script>
+
+</body>
+</html>
